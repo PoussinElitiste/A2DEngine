@@ -18,10 +18,12 @@
 #define REVISION 0
 
 extern Advanced2D::bool8 gGameOver;
+
 extern Advanced2D::bool8 GamePreload();
 extern Advanced2D::bool8 GameInit(HWND);
 extern void GameUpdate();
 extern void GameEnd();
+extern void GameRender3D();
 
 namespace Advanced2D
 {

@@ -1,6 +1,5 @@
 // Local include
 #include "A2DEngine.hpp"
-//#include "A2DTypes.hpp"
 #include "A2DTimer.hpp"
 #include "WinMain.hpp"
 
@@ -232,6 +231,9 @@ namespace Advanced2D
 
             // Begin rendering
             RenderStart();
+
+            // Allow game to render
+            GameRender3D();
 
             // Done rendering
             RenderStop();

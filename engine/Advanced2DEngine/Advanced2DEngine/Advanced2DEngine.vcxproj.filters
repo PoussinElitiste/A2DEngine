@@ -4,6 +4,8 @@
     <ClCompile Include="..\..\source\A2DEngine.cpp" />
     <ClCompile Include="..\..\source\A2DTimer.cpp" />
     <ClCompile Include="..\..\source\WinMain.cpp" />
+    <ClCompile Include="..\..\source\A2DCamera.cpp" />
+    <ClCompile Include="..\..\source\A2DVector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
@@ -11,5 +13,7 @@
     <ClInclude Include="..\..\include\A2DTimer.hpp" />
     <ClInclude Include="..\..\include\A2DTypes.hpp" />
     <ClInclude Include="..\..\include\WinMain.hpp" />
+    <ClInclude Include="..\..\include\A2DCamera.hpp" />
+    <ClInclude Include="..\..\include\A2DVector3.hpp" />
   </ItemGroup>
 </Project>
