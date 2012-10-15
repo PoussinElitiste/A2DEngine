@@ -8,15 +8,20 @@
 #include <d3Dx9.h>
 #include <DxErr.h>
 
-// local include
-#include "A2DTimer.hpp"
+// local Include
 #include "A2DString.hpp"
 #include "A2DTypes.hpp"
+
+// core include
+#include "A2DCamera.hpp"
+#include "A2DMesh.hpp"
+#include "A2DTimer.hpp"
 
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0
 #define REVISION 0
 
+// Engine API
 extern Advanced2D::bool8 gGameOver;
 
 extern Advanced2D::bool8 GamePreload();
@@ -41,8 +46,35 @@ namespace Advanced2D
             int32 mHeight;
             int32 mColorDepth;
             bool8 mFullScreen;
-        };
+        }; // ScreenProperties
 
+    private:
+        int32 mVersionMajor, mVersionMinor, mRevision;
+
+        HWND mWindowHandle;
+
+        LPDIRECT3D9 mpD3D;
+        LPDIRECT3DDEVICE9 mpDevice;
+        LPDIRECT3DSURFACE9 mpBackBuffer;
+        LPD3DXSPRITE mpSpriteHandler;
+
+        A2DString mAppTitle;
+
+        ScreenProperties mScreenConfig;
+
+        bool8 mPauseMode;
+        D3DCOLOR mAmbientColor;
+        bool8 mMaximizeProcesser;
+
+        A2DTimer mCoreTimer;
+        long32 mFrameCountCore;
+        long32 mFrameRateCore;
+
+        A2DTimer mRealTimer;
+        long32 mFrameCountReal;
+        long32 mFrameRateReal;
+
+   public:
         A2DEngine();
         virtual ~A2DEngine();
 
@@ -53,6 +85,7 @@ namespace Advanced2D
         void FatalError(const A2DString& aMessage, const A2DString& aTitle = "FATAL_ERROR");
         void ShutDown();
         void ClearScene(D3DCOLOR aColor);
+        void SetIdentity(); // reset scene Position
         void SetDefaultMaterial();
         void SetAmbient(D3DCOLOR aColorValue);
         int32 RenderStart();
@@ -88,32 +121,6 @@ namespace Advanced2D
 
         // Accessor Second order
         A2DString GetVersionText() const;
-
-    private:
-        int32 mVersionMajor, mVersionMinor, mRevision;
-
-        HWND mWindowHandle;
-
-        LPDIRECT3D9 mpD3D;
-        LPDIRECT3DDEVICE9 mpDevice;
-        LPDIRECT3DSURFACE9 mpBackBuffer;
-        LPD3DXSPRITE mpSpriteHandler;
-
-        A2DString mAppTitle;
-
-        ScreenProperties mScreenConfig;
-
-        bool8 mPauseMode;
-        D3DCOLOR mAmbientColor;
-        bool8 mMaximizeProcesser;
-
-        A2DTimer mCoreTimer;
-        long32 mFrameCountCore;
-        long32 mFrameRateCore;
-
-        A2DTimer mRealTimer;
-        long32 mFrameCountReal;
-        long32 mFrameRateReal;
     }; //class
 
 }; // namespace

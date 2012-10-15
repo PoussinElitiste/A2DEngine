@@ -41,7 +41,7 @@ namespace Advanced2D
         A2DPrespectiveInfos mPerspective;
     public:
         A2DCamera();
-        ~A2DCamera();
+        virtual ~A2DCamera();
 
         void SetPerspective(const A2DPrespectiveInfos& aPerspective) { mPerspective = aPerspective; }
         A2DPrespectiveInfos& GetPerspective() { return mPerspective; }

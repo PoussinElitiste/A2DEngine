@@ -79,7 +79,7 @@ namespace Advanced2D
         ShutDown();
     }
 
-    int A2DEngine::Init(const ScreenProperties& aScreenConfig)
+    int32 A2DEngine::Init(const ScreenProperties& aScreenConfig)
     {
         //initialize Direct3D
         mpD3D = Direct3DCreate9(D3D_SDK_VERSION);
@@ -154,10 +154,17 @@ namespace Advanced2D
         mpDevice->SetMaterial(&material);
     }
 
-
     void A2DEngine::ClearScene(D3DCOLOR aColor)
     {
         mpDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, aColor, 1.0f, 0);
+    }
+
+    void A2DEngine::SetIdentity()
+    {
+        D3DXMATRIX mat;
+        D3DXMatrixIdentity(&mat);
+        
+        mpDevice->SetTransform(D3DTS_WORLD, &mat);
     }
 
     void A2DEngine::SetAmbient(D3DCOLOR aColorValue)

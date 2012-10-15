@@ -1,4 +1,7 @@
+// external include
 #include <iostream>
+
+// Engine include
 #include <A2DEngine.hpp>
 
 bool GamePreload()
@@ -13,3 +16,4 @@ bool GamePreload()
 bool GameInit(HWND hwnd) { return 0;}
 void GameUpdate() {}
 void GameEnd() {}
+void GameRender3D() {}
