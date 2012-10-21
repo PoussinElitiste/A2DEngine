@@ -7,6 +7,7 @@
     <ClCompile Include="..\..\source\A2DCamera.cpp" />
     <ClCompile Include="..\..\source\A2DVector3.cpp" />
     <ClCompile Include="..\..\source\A2DMesh.cpp" />
+    <ClCompile Include="..\..\source\A2DLight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
@@ -17,5 +18,6 @@
     <ClInclude Include="..\..\include\A2DCamera.hpp" />
     <ClInclude Include="..\..\include\A2DVector3.hpp" />
     <ClInclude Include="..\..\include\A2DMesh.hpp" />
+    <ClInclude Include="..\..\include\A2DLight.hpp" />
   </ItemGroup>
 </Project>

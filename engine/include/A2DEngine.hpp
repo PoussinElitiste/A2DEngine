@@ -15,6 +15,7 @@
 // core include
 #include "A2DCamera.hpp"
 #include "A2DMesh.hpp"
+#include "A2DLight.hpp"
 #include "A2DTimer.hpp"
 
 #define VERSION_MAJOR 1
@@ -35,6 +36,7 @@ namespace Advanced2D
     class A2DEngine
     {
     public:
+        typedef D3DCOLOR A2DColor;
         class ScreenProperties
         {
         public:
@@ -63,7 +65,7 @@ namespace Advanced2D
         ScreenProperties mScreenConfig;
 
         bool8 mPauseMode;
-        D3DCOLOR mAmbientColor;
+        A2DColor mAmbientColor;
         bool8 mMaximizeProcesser;
 
         A2DTimer mCoreTimer;
@@ -84,10 +86,10 @@ namespace Advanced2D
         void Message(const A2DString& aMessage, const A2DString& aTitle = "ADVANCED_2D");
         void FatalError(const A2DString& aMessage, const A2DString& aTitle = "FATAL_ERROR");
         void ShutDown();
-        void ClearScene(D3DCOLOR aColor);
+        void ClearScene(A2DColor aColor);
         void SetIdentity(); // reset scene Position
         void SetDefaultMaterial();
-        void SetAmbient(D3DCOLOR aColorValue);
+        void SetAmbient(A2DColor aColorValue);
         int32 RenderStart();
         int32 RenderStop();
         int32 Release();

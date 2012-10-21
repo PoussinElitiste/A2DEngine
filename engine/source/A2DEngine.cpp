@@ -154,7 +154,7 @@ namespace Advanced2D
         mpDevice->SetMaterial(&material);
     }
 
-    void A2DEngine::ClearScene(D3DCOLOR aColor)
+    void A2DEngine::ClearScene(A2DColor aColor)
     {
         mpDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, aColor, 1.0f, 0);
     }
@@ -167,7 +167,7 @@ namespace Advanced2D
         mpDevice->SetTransform(D3DTS_WORLD, &mat);
     }
 
-    void A2DEngine::SetAmbient(D3DCOLOR aColorValue)
+    void A2DEngine::SetAmbient(A2DColor aColorValue)
     {
         mAmbientColor = aColorValue;
         mpDevice->SetRenderState(D3DRS_AMBIENT, mAmbientColor);

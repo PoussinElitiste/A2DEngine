@@ -98,6 +98,12 @@ namespace Advanced2D
         return true;
     }
 
+    void A2DMesh::SetTransformation(const A2DTransformationInfos& aTransform)
+    {
+        mTransform = aTransform;
+    }
+
+
     void A2DMesh::CreateSphere(float aRadius, int aSlices, int aStacks)
     {
         D3DXCreateSphere(gpEngine->GetDevice(), aRadius, aSlices, aStacks, &mpMesh, NULL);

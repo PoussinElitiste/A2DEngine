@@ -56,6 +56,7 @@ namespace Advanced2D
         bool Load(const char* aFileName);
         void CreateSphere(float aRadius, int aSlices, int aStacks);
         void CreateCube(float aWidth, float aHeight, float aDepth);
+        void SetTransformation(const A2DTransformationInfos& aTransform);
 
         void Update();
         void LimitBoundary(float left, float right, float top, float bottom, float back, float front);
