@@ -35,16 +35,26 @@ bool GameInit(HWND hwnd)
 
     // load the mesh
     gpMesh = new A2DMesh();
-    gpMesh->CreateCube(1.f, 1.f, 1.f);
-    //gpMesh->Load("../../asset/ball.x");
+    //gpMesh->CreateCube(1.f, 1.f, 1.f);
+    gpMesh->Load("../../asset/ball.x");
     A2DMesh::A2DTransformationInfos transfo;
     //transfo.mScale = A2DVector3(2.f, 2.f, 2.f);
     gpMesh->SetTransformation(transfo);
 
     // create a directional light
-    A2DVector3 pos(0.f, 0.f, 0.f);
-    A2DVector3 dir(0.f, -1.f, 0.f);
-    gpLight = new A2DLight(0, D3DLIGHT_DIRECTIONAL, pos, dir, 100.f);
+    //A2DVector3 pos(10.f, 0.f, 0.f);
+    //A2DVector3 dir(0.f, 0.f, 0.f);
+    //gpLight = new A2DLight(0, D3DLIGHT_DIRECTIONAL, pos, dir, 100.f);
+
+    // create a spot light
+    //A2DVector3 pos(-10.f, -20.f, 0.f);
+    //A2DVector3 dir(0.f, 2.f, 0.f);
+    //gpLight = new A2DLight(0, D3DLIGHT_SPOT, pos, dir, 1000.f);
+
+    // create a point light
+    A2DVector3 pos(0.f, -20.f, 0.f);
+    A2DVector3 dir(0.f, 0.f, 0.f);
+    gpLight = new A2DLight(0, D3DLIGHT_POINT, pos, dir, 20.f);
 
     // set a low ambient level
     gpEngine->SetAmbient(D3DCOLOR_XRGB(20, 20, 20));
