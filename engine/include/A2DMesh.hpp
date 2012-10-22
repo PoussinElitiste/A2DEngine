@@ -6,8 +6,8 @@
 #include <d3dx9math.h>
 
 // local include 
-#include "A2DEngine.hpp"
-#include "A2DVector3.hpp"
+#include <A2DEngine.hpp>
+#include <A2DVector3.hpp>
 
 namespace Advanced2D
 {
@@ -16,15 +16,15 @@ namespace Advanced2D
     public:
         struct A2DTransformationInfos
          {
-             A2DTransformationInfos( const A2DVector3& aPosition = A2DVector3()
-                 , const A2DVector3& aVelocity = A2DVector3()
-                 , const A2DVector3& aRotation = A2DVector3()
-                 , const A2DVector3& aScale = A2DVector3(1.f, 1.f, 1.f) );
+             A2DTransformationInfos( const A2DRenderVector& aPosition = A2DRenderVector()
+                 , const A2DRenderVector& aVelocity = A2DRenderVector()
+                 , const A2DRenderVector& aRotation = A2DRenderVector()
+                 , const A2DRenderVector& aScale = A2DRenderVector(1.f, 1.f, 1.f) );
 
-             A2DVector3 mPosition;
-             A2DVector3 mVelocity;
-             A2DVector3 mRotate;
-             A2DVector3 mScale;
+             A2DRenderVector mPosition;
+             A2DRenderVector mVelocity;
+             A2DRenderVector mRotate;
+             A2DRenderVector mScale;
          }; // A2DTransformationInfos
 
     private:
@@ -60,7 +60,7 @@ namespace Advanced2D
 
         void Update();
         void LimitBoundary(float left, float right, float top, float bottom, float back, float front);
-        void Rotate(const A2DVector3& aRot); // in degree
+        void Rotate(const A2DRenderVector& aRot); // in degree
         void Rotate(float x, float y, float z); // in degree
         void Tranform();
         void Draw();

@@ -12,11 +12,11 @@ namespace Advanced2D
     public:
         struct A2DLocalisationInfos
         {
-            A2DLocalisationInfos( const A2DVector3& aPosition = A2DVector3()
-                , const A2DVector3& aTarget = A2DVector3() );
+            A2DLocalisationInfos( const A2DRenderVector& aPosition = A2DRenderVector()
+                , const A2DRenderVector& aTarget = A2DRenderVector() );
 
-            A2DVector3 mPosition;
-            A2DVector3 mTarget;
+            A2DRenderVector mPosition;
+            A2DRenderVector mTarget;
         }; // A2DLocalisationInfos
 
         struct A2DPrespectiveInfos
@@ -35,7 +35,7 @@ namespace Advanced2D
     private:
         D3DXMATRIX mMatrixProj;
         D3DXMATRIX mMatrixView;
-        A2DVector3 mUpDir;
+        A2DRenderVector mUpDir;
 
         A2DLocalisationInfos mLocalisation;
         A2DPrespectiveInfos mPerspective;

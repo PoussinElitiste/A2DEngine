@@ -10,13 +10,13 @@ namespace Advanced2D
         , mFOV(aFOV)
     {}
 
-    A2DCamera::A2DLocalisationInfos::A2DLocalisationInfos( const A2DVector3& aPosition, const A2DVector3& aTarget )
+    A2DCamera::A2DLocalisationInfos::A2DLocalisationInfos( const A2DRenderVector& aPosition, const A2DRenderVector& aTarget )
         : mPosition(aPosition)
         , mTarget(aTarget)
     {}
 
     A2DCamera::A2DCamera()
-        : mLocalisation(A2DVector3(0.f, 0.f, 10.f))
+        : mLocalisation(A2DRenderVector(0.f, 0.f, 10.f))
         , mUpDir(0.f, 1.f, 0.f)
         , mPerspective(A2DPrespectiveInfos(1.f, 2000.f, 640/480, 3.14159f/4.f))
     {}

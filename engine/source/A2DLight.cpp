@@ -3,7 +3,7 @@
 
 namespace Advanced2D
 {
-    A2DLight::A2DLight(int32 aLightNum, A2DType aType, const A2DVector3& aPosition, const A2DVector3& aDirection, double64 aRange)
+    A2DLight::A2DLight(int32 aLightNum, A2DType aType, const A2DRenderVector& aPosition, const A2DRenderVector& aDirection, double64 aRange)
         : mLightNum(aLightNum)
         , mType(aType)
     {
@@ -42,7 +42,7 @@ namespace Advanced2D
                 mLight.Type = D3DLIGHT_DIRECTIONAL;
                 mLight.Range = static_cast<float>(aRange);
                 //create a normalized direction
-                D3DXVec3Normalize( static_cast<A2DVector3*>(&mLight.Direction), &aDirection );
+                D3DXVec3Normalize( static_cast<A2DRenderVector*>(&mLight.Direction), &aDirection );
             }
             break;
         }

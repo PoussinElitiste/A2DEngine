@@ -2,8 +2,8 @@
 #define INC_ADVANCED2D_A2DLIGHT_HPP
 
 // local include 
-#include "A2DEngine.hpp"
-#include "A2DVector3.hpp"
+#include <A2DEngine.hpp>
+#include <A2DVector3.hpp>
 
 // external include
 #include <d3d9types.h>
@@ -24,8 +24,8 @@ namespace Advanced2D
    public:
         A2DLight( int32 aLightNum
                 , A2DType aType
-                , const A2DVector3& aPosition
-                , const A2DVector3& aDirection
+                , const A2DRenderVector& aPosition
+                , const A2DRenderVector& aDirection
                 , double64 aRange);
         virtual ~A2DLight();
 
@@ -41,10 +41,10 @@ namespace Advanced2D
         void SetColor(A2DColor aColor) { mLight.Diffuse = aColor; }
         A2DColor GetColor() const { return mLight.Diffuse; }
 
-        void SetDirection(const A2DVector3& aDirection) { mLight.Direction = aDirection; }
+        void SetDirection(const A2DRenderVector& aDirection) { mLight.Direction = aDirection; }
         const A2DVector& GetDirection() const { return mLight.Direction; }
 
-        void SetPosition(const A2DVector3& aPosition) { mLight.Position = aPosition; }
+        void SetPosition(const A2DRenderVector& aPosition) { mLight.Position = aPosition; }
         const A2DVector& GetPosition() const { return mLight.Position; }
 
         void Update();

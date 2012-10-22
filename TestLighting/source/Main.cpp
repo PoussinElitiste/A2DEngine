@@ -24,12 +24,12 @@ bool GamePreload()
 
 bool GameInit(HWND hwnd) 
 {
-    srand(time(NULL));
+    srand(static_cast<uint32>(time(NULL)));
 
     // Set Camera perspective
     gpCamera = new A2DCamera();
-    A2DVector3 position(0.f, 2.f, 10.f);
-    A2DVector3 target(0.f, 0.f, 0.f);
+    A2DRenderVector position(0.f, 2.f, 10.f);
+    A2DRenderVector target(0.f, 0.f, 0.f);
     gpCamera->SetLocalisation(A2DCamera::A2DLocalisationInfos(position, target));
     gpCamera->Update();
 
@@ -38,23 +38,23 @@ bool GameInit(HWND hwnd)
     //gpMesh->CreateCube(1.f, 1.f, 1.f);
     gpMesh->Load("../../asset/ball.x");
     A2DMesh::A2DTransformationInfos transfo;
-    //transfo.mScale = A2DVector3(2.f, 2.f, 2.f);
+    //transfo.mScale = A2DRenderVector(2.f, 2.f, 2.f);
     gpMesh->SetTransformation(transfo);
 
     // create a directional light
-    //A2DVector3 pos(10.f, 0.f, 0.f);
-    //A2DVector3 dir(0.f, 0.f, 0.f);
+    //A2DRenderVector pos(10.f, 0.f, 0.f);
+    //A2DRenderVector dir(0.f, 0.f, 0.f);
     //gpLight = new A2DLight(0, D3DLIGHT_DIRECTIONAL, pos, dir, 100.f);
 
     // create a spot light
-    //A2DVector3 pos(-10.f, -20.f, 0.f);
-    //A2DVector3 dir(0.f, 2.f, 0.f);
-    //gpLight = new A2DLight(0, D3DLIGHT_SPOT, pos, dir, 1000.f);
+    A2DRenderVector pos(-10.f, -20.f, 0.f);
+    A2DRenderVector dir(0.f, 2.f, 0.f);
+    gpLight = new A2DLight(0, D3DLIGHT_SPOT, pos, dir, 1000.f);
 
     // create a point light
-    A2DVector3 pos(0.f, -20.f, 0.f);
-    A2DVector3 dir(0.f, 0.f, 0.f);
-    gpLight = new A2DLight(0, D3DLIGHT_POINT, pos, dir, 20.f);
+    //A2DRenderVector pos(0.f, -20.f, 0.f);
+    //A2DRenderVector dir(0.f, 0.f, 0.f);
+    //gpLight = new A2DLight(0, D3DLIGHT_POINT, pos, dir, 20.f);
 
     // set a low ambient level
     gpEngine->SetAmbient(D3DCOLOR_XRGB(20, 20, 20));
@@ -88,4 +88,9 @@ void GameRender3D()
 
     gpMesh->Tranform();
     gpMesh->Draw();
+}
+
+void GameRender2D()
+{
+
 }

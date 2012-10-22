@@ -30,13 +30,15 @@ extern Advanced2D::bool8 GameInit(HWND);
 extern void GameUpdate();
 extern void GameEnd();
 extern void GameRender3D();
+extern void GameRender2D();
 
 namespace Advanced2D
 {
+    typedef D3DCOLOR A2DColor;
+
     class A2DEngine
     {
     public:
-        typedef D3DCOLOR A2DColor;
         class ScreenProperties
         {
         public:
@@ -92,6 +94,8 @@ namespace Advanced2D
         void SetAmbient(A2DColor aColorValue);
         int32 RenderStart();
         int32 RenderStop();
+        int32 Render2DStart();
+        int32 Render2DStop();
         int32 Release();
 
         // accessor/mutator First order

@@ -6,8 +6,8 @@
 
 namespace Advanced2D
 {
-    A2DMesh::A2DTransformationInfos::A2DTransformationInfos( const A2DVector3& aPosition, const A2DVector3& aVelocity
-                 , const A2DVector3& aRotation, const A2DVector3& aScale )
+    A2DMesh::A2DTransformationInfos::A2DTransformationInfos( const A2DRenderVector& aPosition, const A2DRenderVector& aVelocity
+                 , const A2DRenderVector& aRotation, const A2DRenderVector& aScale )
         : mPosition(aPosition)
         , mVelocity(aVelocity)
         , mRotate(aRotation)
@@ -166,7 +166,7 @@ namespace Advanced2D
         gpEngine->GetDevice()->SetTransform(D3DTS_WORLD, &mMatWorld);
     }
 
-    void A2DMesh::Rotate(const A2DVector3& aRot)
+    void A2DMesh::Rotate(const A2DRenderVector& aRot)
     {
         Rotate(aRot.x, aRot.y, aRot.z);
     }
@@ -187,7 +187,7 @@ namespace Advanced2D
 
     void A2DMesh::LimitBoundary(float left, float right, float top, float bottom, float back, float front)
     {
-        const A2DVector3& position = mTransform.mPosition; 
+        const A2DRenderVector& position = mTransform.mPosition; 
         if ( position.x < left || position.x > right) 
         {
             mTransform.mVelocity.x *= -1;

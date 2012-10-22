@@ -173,7 +173,7 @@ namespace Advanced2D
         mpDevice->SetRenderState(D3DRS_AMBIENT, mAmbientColor);
     }
 
-    int A2DEngine::RenderStart()
+    int32 A2DEngine::RenderStart()
     {
         if (nullptr == mpDevice)
         { return 0; }
@@ -184,7 +184,7 @@ namespace Advanced2D
         return 1;
     }
 
-    int A2DEngine::RenderStop()
+    int32 A2DEngine::RenderStop()
     {
         if ( nullptr == mpDevice )
         { return 0; }
@@ -195,6 +195,20 @@ namespace Advanced2D
         if ( mpDevice->Present(NULL, NULL, NULL, NULL) != D3D_OK )
         { return 0; }
 
+        return 1;
+    }
+
+    int32 A2DEngine::Render2DStart()
+    {
+        if (mpSpriteHandler->Begin(D3DXSPRITE_ALPHABLEND) != D3D_OK)
+        { return 0; }
+        else
+        { return 1; }
+    }
+
+    int32 A2DEngine::Render2DStop()
+    {
+        mpSpriteHandler->End();
         return 1;
     }
 
@@ -241,6 +255,11 @@ namespace Advanced2D
 
             // Allow game to render
             GameRender3D();
+
+            // 2D Rendering
+            Render2DStart();
+            GameRender2D();
+            Render2DStop();
 
             // Done rendering
             RenderStop();

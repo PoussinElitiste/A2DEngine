@@ -57,7 +57,7 @@ int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aHPrevInstance, LPSTR aLPCmdL
 
     //get window caption string from engine
     char title[255];
-    sprintf(title, "%s", gpEngine->GetAppTitle().c_str());
+    sprintf_s(title, "%s", gpEngine->GetAppTitle().c_str());
 
     //set window dimensions
     A2DEngine::ScreenProperties& rScreenProperties = gpEngine->GetScreenProperties();

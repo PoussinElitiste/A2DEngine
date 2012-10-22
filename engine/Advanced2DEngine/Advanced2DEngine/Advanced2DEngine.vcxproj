@@ -62,11 +62,13 @@
     <OutDir>$(SolutionDir)..\lib\</OutDir>
     <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)../include/</IncludePath>
     <TargetName>$(ProjectName)D</TargetName>
+    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\Engine\lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)..\lib\</OutDir>
     <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)../include/</IncludePath>
+    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\Engine\lib</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
