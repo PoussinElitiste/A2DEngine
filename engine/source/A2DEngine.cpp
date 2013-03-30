@@ -1,7 +1,6 @@
 // Local include
-#include "A2DEngine.hpp"
-#include "A2DTimer.hpp"
-#include "WinMain.hpp"
+#include <A2DEngine.hpp>
+#include <WinMain.hpp>
 
 // External include
 #include <cstdlib>
@@ -200,7 +199,7 @@ namespace Advanced2D
 
     int32 A2DEngine::Render2DStart()
     {
-        if (mpSpriteHandler->Begin(D3DXSPRITE_ALPHABLEND) != D3D_OK)
+        if ( mpSpriteHandler->Begin(D3DXSPRITE_ALPHABLEND) != D3D_OK )
         { return 0; }
         else
         { return 1; }

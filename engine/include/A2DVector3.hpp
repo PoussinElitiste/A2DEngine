@@ -6,6 +6,7 @@
 
 // local include
 #include <A2DTypes.hpp>
+#include <A2DTemplate.hpp>
 
 namespace Advanced2D
 {
@@ -19,36 +20,30 @@ namespace Advanced2D
         A2DRenderVector(float32 x = 0.f, float32 y = 0.f, float32 z = 0.f);
         virtual ~A2DRenderVector();
     }; // A2DRenderVector
+    
+    enum A2DVectCoordinate : uint32
+    {
+        X = 0,
+        Y,
+        Z,
+        MAX_COORD
+    }; // A2DVectCoordinate
 
     //-----------------------------------------------------------
     // A2DVector3
     //-----------------------------------------------------------
     class A2DVector3
+        : public A2DBaseCategory< Advanced2D::A2DVectCoordinate, Advanced2D::MAX_COORD, double64 >
     {
     public:
-        enum Coordinate
-        {
-            X = 0,
-            Y,
-            Z,
-            MAX
-        };
-
-    private:
-        double64 mVect[MAX];
- 
-    public:
         A2DVector3();
-        A2DVector3( double64 aX, double64 aY, double64 aZ );
-        A2DVector3( int32 aX, int32 aY, int32 aZ );
+        A2DVector3( double64 aX, double64 aY, double64 aZ = 0.);
+        A2DVector3( int32 aX, int32 aY, int32 aZ = 0);
         A2DVector3( const A2DVector3& aVect );
         virtual ~A2DVector3();
        
         void Set( double64 aX, double64 aY, double64 aZ );
         void Set( const A2DVector3& aVect );
-        void Set( Coordinate aCoord, double64 aValue ) { mVect[aCoord] = aValue; }
-        //double64 Get(Coordinate aCoord) { return mVect[aCoord]; }
-        double64 operator()( Coordinate aCoord ) const { return mVect[aCoord]; }
         A2DVector3& operator=( const A2DVector3& aVect );
 
         const A2DVector3& Move( const A2DVector3& aMove );

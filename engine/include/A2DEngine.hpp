@@ -16,11 +16,19 @@
 #include "A2DCamera.hpp"
 #include "A2DMesh.hpp"
 #include "A2DLight.hpp"
+#include "A2DSprite.hpp"
+#include "A2DTexture.hpp"
 #include "A2DTimer.hpp"
+#include "A2DVector3.hpp"
+
+#include <A2DTemplate.hpp>
 
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0
 #define REVISION 0
+
+//macro to read the key states
+#define KEY_DOWN(vk) ((GetAsyncKeyState(vk) & 0x8000)?1:0)
 
 // Engine API
 extern Advanced2D::bool8 gGameOver;
@@ -78,10 +86,11 @@ namespace Advanced2D
         long32 mFrameCountReal;
         long32 mFrameRateReal;
 
-   public:
+    public:
         A2DEngine();
         virtual ~A2DEngine();
 
+    public:
         int32 Init(const ScreenProperties& aScreenConfig);
         void Close();
         void Update();
@@ -98,6 +107,7 @@ namespace Advanced2D
         int32 Render2DStop();
         int32 Release();
 
+    public:
         // accessor/mutator First order
         bool8 IsPaused() const { return mPauseMode; }
         void SetPaused(bool8 aValue) { mPauseMode = aValue; }

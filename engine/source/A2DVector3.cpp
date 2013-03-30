@@ -20,7 +20,6 @@ namespace Advanced2D
     //-----------------------------------------------------------
     A2DVector3::A2DVector3()
     {
-        memset(mVect, 0, sizeof(mVect));
     }
 
     A2DVector3::A2DVector3(double64 aX, double64 aY, double64 aZ)
@@ -43,32 +42,32 @@ namespace Advanced2D
 
     void A2DVector3::Set( double64 aX, double64 aY, double64 aZ )
     {
-        mVect[X] = aX;
-        mVect[Y] = aY;
-        mVect[Z] = aZ;
+        mObj[X] = aX;
+        mObj[Y] = aY;
+        mObj[Z] = aZ;
     }
 
     void A2DVector3::Set(const A2DVector3& aVect)
     {
-        mVect[X] = aVect(X);
-        mVect[Y] = aVect(Y);
-        mVect[Z] = aVect(Z);
+        mObj[X] = aVect(X);
+        mObj[Y] = aVect(Y);
+        mObj[Z] = aVect(Z);
     }
 
     const A2DVector3& A2DVector3::Move( const A2DVector3& aMove )
     {
-        mVect[X] += aMove(X);
-        mVect[Y] += aMove(Y);
-        mVect[Z] += aMove(Z);
+        mObj[X] += aMove(X);
+        mObj[Y] += aMove(Y);
+        mObj[Z] += aMove(Z);
 
         return *this;
     }
 
     const A2DVector3& A2DVector3::Scale( double64 aValue )
     {
-        mVect[X] *= aValue;
-        mVect[Y] *= aValue;
-        mVect[Z] *= aValue;
+        mObj[X] *= aValue;
+        mObj[Y] *= aValue;
+        mObj[Z] *= aValue;
 
         return *this;
     }
@@ -80,30 +79,30 @@ namespace Advanced2D
 
     void A2DVector3::operator-=( const A2DVector3& aVect )
     { 
-        mVect[X] -= aVect(X);
-        mVect[Y] -= aVect(Y);
-        mVect[Z] -= aVect(Z); 
+        mObj[X] -= aVect(X);
+        mObj[Y] -= aVect(Y);
+        mObj[Z] -= aVect(Z); 
     }
 
     void A2DVector3::operator*=( const A2DVector3& aVect )
     {
-        mVect[X] *= aVect(X);
-        mVect[Y] *= aVect(Y);
-        mVect[Z] *= aVect(Z);
+        mObj[X] *= aVect(X);
+        mObj[Y] *= aVect(Y);
+        mObj[Z] *= aVect(Z);
     }
     void A2DVector3::operator/=( const A2DVector3& aVect )
     {
-        mVect[X] /= aVect(X);
-        mVect[Y] /= aVect(Y);
-        mVect[Z] /= aVect(Z);
+        mObj[X] /= aVect(X);
+        mObj[Y] /= aVect(Y);
+        mObj[Z] /= aVect(Z);
     }
 
     bool8 A2DVector3::operator==( const A2DVector3& aVect ) const
     {
         return (
-            (((aVect(X) - EPSILON) < mVect[X]) && (mVect[X] < (aVect(X) + EPSILON))) &&
-            (((aVect(Y) - EPSILON) < mVect[Y]) && (mVect[Y] < (aVect(Y) + EPSILON))) &&
-            (((aVect(Z) - EPSILON) < mVect[Z]) && (mVect[Z] < (aVect(Z) + EPSILON))) );
+            (((aVect(X) - EPSILON) < mObj[X]) && (mObj[X] < (aVect(X) + EPSILON))) &&
+            (((aVect(Y) - EPSILON) < mObj[Y]) && (mObj[Y] < (aVect(Y) + EPSILON))) &&
+            (((aVect(Z) - EPSILON) < mObj[Z]) && (mObj[Z] < (aVect(Z) + EPSILON))) );
     }
 
     bool8 A2DVector3::operator!=( const A2DVector3& aVect ) const
@@ -120,8 +119,8 @@ namespace Advanced2D
     double64 A2DVector3::Distance2D( const A2DVector3& aVect )
     {
         return sqrt( 
-            (aVect(X) - mVect[X]) * (aVect(X) - mVect[X]) + 
-            (aVect(Y) - mVect[Y]) * (aVect(Y) - mVect[Y]) );
+            (aVect(X) - mObj[X]) * (aVect(X) - mObj[X]) + 
+            (aVect(Y) - mObj[Y]) * (aVect(Y) - mObj[Y]) );
     }
 
     double64 A2DVector3::Length()
@@ -131,14 +130,14 @@ namespace Advanced2D
 
     double64 A2DVector3::DotProduct( const A2DVector3& aVect )
     {
-        return mVect[X]*aVect(X) + mVect[Y]*aVect(Y) + mVect[Z]*aVect(Z);
+        return mObj[X]*aVect(X) + mObj[Y]*aVect(Y) + mObj[Z]*aVect(Z);
     }
 
     A2DVector3 A2DVector3::CrossProduct( const A2DVector3& aVect )
     {
-        double64 nX = ( mVect[Y] * aVect(Z) ) - ( mVect[Z] * aVect(Y) );
-        double64 nY = ( mVect[Z] * aVect(X) ) - ( mVect[X] * aVect(Z) );
-        double64 nZ = ( mVect[X] * aVect(Y) ) - ( mVect[Y] * aVect(X) );
+        double64 nX = ( mObj[Y] * aVect(Z) ) - ( mObj[Z] * aVect(Y) );
+        double64 nY = ( mObj[Z] * aVect(X) ) - ( mObj[X] * aVect(Z) );
+        double64 nZ = ( mObj[X] * aVect(Y) ) - ( mObj[Y] * aVect(X) );
 
         return A2DVector3( nX, nY, nZ );
     }
@@ -152,9 +151,9 @@ namespace Advanced2D
         else
         { length = 1 / Length(); }
 
-        double64 nX = mVect[X] * length;
-        double64 nY = mVect[Y] * length;
-        double64 nZ = mVect[Z] * length;
+        double64 nX = mObj[X] * length;
+        double64 nY = mObj[Y] * length;
+        double64 nZ = mObj[Z] * length;
 
         return A2DVector3( nX, nY, nZ );
     }

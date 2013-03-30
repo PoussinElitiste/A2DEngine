@@ -2,7 +2,7 @@
 #define INC_ADVANCED2D_A2DMESH_HPP
 
 // external include
-#include <d3dx9mesh.h>
+#include <d3dx9.h>
 #include <d3dx9math.h>
 
 // local include 

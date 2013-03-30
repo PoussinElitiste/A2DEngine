@@ -21,7 +21,7 @@ std::vector<A2DMesh*> gBalls;
 bool GamePreload()
 {
     //display engine version in a message box
-    gpEngine->SetAppTitle( "BOUNCING BALLS");
+    gpEngine->SetAppTitle("BOUNCING BALLS");
     gpEngine->SetScreenProperties(A2DEngine::ScreenProperties(1024, 768, 32, false));
 
     return true;

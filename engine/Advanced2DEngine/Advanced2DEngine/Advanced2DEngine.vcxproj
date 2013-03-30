@@ -15,6 +15,8 @@
     <ClCompile Include="..\..\source\A2DEngine.cpp" />
     <ClCompile Include="..\..\source\A2DLight.cpp" />
     <ClCompile Include="..\..\source\A2DMesh.cpp" />
+    <ClCompile Include="..\..\source\A2DSprite.cpp" />
+    <ClCompile Include="..\..\source\A2DTexture.cpp" />
     <ClCompile Include="..\..\source\A2DTimer.cpp" />
     <ClCompile Include="..\..\source\A2DVector3.cpp" />
     <ClCompile Include="..\..\source\WinMain.cpp" />
@@ -24,7 +26,10 @@
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
     <ClInclude Include="..\..\include\A2DLight.hpp" />
     <ClInclude Include="..\..\include\A2DMesh.hpp" />
+    <ClInclude Include="..\..\include\A2DSprite.hpp" />
     <ClInclude Include="..\..\include\A2DString.hpp" />
+    <ClInclude Include="..\..\include\A2DTemplate.hpp" />
+    <ClInclude Include="..\..\include\A2DTexture.hpp" />
     <ClInclude Include="..\..\include\A2DTimer.hpp" />
     <ClInclude Include="..\..\include\A2DTypes.hpp" />
     <ClInclude Include="..\..\include\A2DVector3.hpp" />

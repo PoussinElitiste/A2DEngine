@@ -7,9 +7,6 @@
 #include "A2DTimer.hpp"
 using namespace Advanced2D;
 
-//macro to read the key states
-#define KEY_DOWN(vk) ((GetAsyncKeyState(vk) & 0x8000)?1:0)
-
 HINSTANCE gHInstance;
 HWND gHWnd;
 int gnCmdShow;
@@ -46,8 +43,8 @@ int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aHPrevInstance, LPSTR aLPCmdL
     RECT windowRect;
     
     // Create engine object first!
-
     gpEngine = new A2DEngine();
+
     //let main program have a crack at things before window is created
     if (!GamePreload()) 
     {
@@ -69,6 +66,7 @@ int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aHPrevInstance, LPSTR aLPCmdL
     //create the window class structure
     WNDCLASSEX wc;
     wc.cbSize = sizeof(WNDCLASSEX);
+
     //fill the struct with info
     wc.style = CS_HREDRAW | CS_VREDRAW;
     wc.lpfnWndProc = (WNDPROC)WinProc;
@@ -168,6 +166,7 @@ int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aHPrevInstance, LPSTR aLPCmdL
     }
 
     gpEngine->Close();
+
     delete gpEngine;
 
     return 1;
