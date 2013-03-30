@@ -19,10 +19,10 @@ namespace Advanced2D
         , mFrameTimer(0)
         , mAnimStartX(0)
         , mAnimStartY(0)
-        , mFaceAngle(0)
-        , mMoveAngle(0)
-        , mRotation(0)
-        , mScaling(1.f)
+        , mFaceAngle(0.0)
+        , mMoveAngle(0.0)
+        , mRotation(0.0)
+        , mScaling(1.0)
         , mColor(0xFFFFFFFF)
         , mMoveTimer(16)
         , mMoveStart(0)
@@ -67,7 +67,7 @@ namespace Advanced2D
         D3DXVECTOR2 scale( (float)mScaling, (float)mScaling );
         D3DXVECTOR2 center( (float)( Get(WIDTH)*mScaling )/2, (float)( Get(HEIGHT)*mScaling )/2 );
         D3DXVECTOR2 trans( (float)Get(X), (float)Get(Y) );
-        D3DXMatrixTransformation2D( &mat, NULL, 0, &scale, &center, (float)mRotation,&trans );
+        D3DXMatrixTransformation2D( &mat, NULL, 0, &scale, &center, (float)mRotation, &trans );
 
         gpEngine->GetSpriteHandle()->SetTransform(&mat);
     }

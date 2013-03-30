@@ -249,13 +249,16 @@ namespace Advanced2D
                 mFrameCountReal = 0;
             }
 
+            //return to the origin
+            SetIdentity();
+
             // Begin rendering
             RenderStart();
 
-            // Allow game to render
+            // Allow game to 3D render
             GameRender3D();
 
-            // 2D Rendering
+            // Allow game to 2D render
             Render2DStart();
             GameRender2D();
             Render2DStop();
