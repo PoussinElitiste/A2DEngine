@@ -116,24 +116,24 @@ namespace Advanced2D
         return *this;
     }
 
-    double64 A2DVector3::Distance2D( const A2DVector3& aVect )
+    double64 A2DVector3::Distance2D( const A2DVector3& aVect ) const
     {
         return sqrt( 
             (aVect(X) - mObj[X]) * (aVect(X) - mObj[X]) + 
             (aVect(Y) - mObj[Y]) * (aVect(Y) - mObj[Y]) );
     }
 
-    double64 A2DVector3::Length()
+    double64 A2DVector3::Length() const
     {
         return sqrt( DotProduct(*this) );
     }
 
-    double64 A2DVector3::DotProduct( const A2DVector3& aVect )
+    double64 A2DVector3::DotProduct( const A2DVector3& aVect ) const
     {
         return mObj[X]*aVect(X) + mObj[Y]*aVect(Y) + mObj[Z]*aVect(Z);
     }
 
-    A2DVector3 A2DVector3::CrossProduct( const A2DVector3& aVect )
+    A2DVector3 A2DVector3::CrossProduct( const A2DVector3& aVect ) const 
     {
         double64 nX = ( mObj[Y] * aVect(Z) ) - ( mObj[Z] * aVect(Y) );
         double64 nY = ( mObj[Z] * aVect(X) ) - ( mObj[X] * aVect(Z) );
@@ -143,7 +143,7 @@ namespace Advanced2D
     }
 
     // calculate normale vector
-    A2DVector3 A2DVector3::Normal()
+    A2DVector3 A2DVector3::Normal() const
     {
         double64 length;
         if ( Length() == 0 )
@@ -159,7 +159,7 @@ namespace Advanced2D
     }
 
     // calculate inverse vector
-    A2DVector3 A2DVector3::Inverse()
+    A2DVector3 A2DVector3::Inverse() const
     {
         return A2DVector3(*this).Scale(-1.f);
     }

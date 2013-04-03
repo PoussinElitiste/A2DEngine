@@ -15,6 +15,7 @@
     <ClCompile Include="..\..\source\A2DEngine.cpp" />
     <ClCompile Include="..\..\source\A2DLight.cpp" />
     <ClCompile Include="..\..\source\A2DMesh.cpp" />
+    <ClCompile Include="..\..\source\A2DParticleEmitter.cpp" />
     <ClCompile Include="..\..\source\A2DSprite.cpp" />
     <ClCompile Include="..\..\source\A2DTexture.cpp" />
     <ClCompile Include="..\..\source\A2DTimer.cpp" />
@@ -26,6 +27,7 @@
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
     <ClInclude Include="..\..\include\A2DLight.hpp" />
     <ClInclude Include="..\..\include\A2DMesh.hpp" />
+    <ClInclude Include="..\..\include\A2DParticleEmitter.hpp" />
     <ClInclude Include="..\..\include\A2DSprite.hpp" />
     <ClInclude Include="..\..\include\A2DString.hpp" />
     <ClInclude Include="..\..\include\A2DTemplate.hpp" />

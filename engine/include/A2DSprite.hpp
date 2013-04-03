@@ -4,10 +4,7 @@
 // external include
 #include <string.h>
 
-// local include 
-
-//#include <A2DEngine.hpp>
-//#include <A2DVector3.hpp>
+// local include
 #include <A2DTexture.hpp>
 #include <A2DTimer.hpp>
 
@@ -101,7 +98,7 @@ namespace Advanced2D
         void SetVelocity(double64 aVx, double64 aVy) { mVelocity.Set(aVx, aVy, 0.); }
 
         void SetSize(int32 aWidth, int32 aHeight) { mDimensions.Set(WIDTH, aWidth); mDimensions.Set(HEIGHT, aHeight); }
-        void Set(A2DSpriteDim aDim, int32 aValue) { mDimensions.Set(aDim, aValue); }
+        void SetDimension(A2DSpriteDim aDim, int32 aValue) { mDimensions.Set(aDim, aValue); }
         uint32 Get(A2DSpriteDim aDim) { return mDimensions(aDim); }
 
         bool8 IsVisible() const { return mIsVisible; }

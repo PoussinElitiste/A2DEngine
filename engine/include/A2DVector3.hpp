@@ -57,12 +57,12 @@ namespace Advanced2D
         bool8 operator==( const A2DVector3& aVect ) const;
         bool8 operator!=( const A2DVector3& aVect ) const;
 
-        double64 Distance2D( const A2DVector3& aVect );
-        double64 Length();
-        double64 DotProduct( const A2DVector3& aVect );
-        A2DVector3 CrossProduct( const A2DVector3& aVect );
-        A2DVector3 Normal();
-        A2DVector3 Inverse();
+        double64 Distance2D( const A2DVector3& aVect ) const;
+        double64 Length() const;
+        double64 DotProduct( const A2DVector3& aVect ) const;
+        A2DVector3 CrossProduct( const A2DVector3& aVect ) const;
+        A2DVector3 Normal() const;
+        A2DVector3 Inverse() const;
     }; // A2DVector3
 } // Advanced2D
 

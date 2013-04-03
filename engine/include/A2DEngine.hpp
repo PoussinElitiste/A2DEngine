@@ -16,10 +16,11 @@
 #include "A2DCamera.hpp"
 #include "A2DMesh.hpp"
 #include "A2DLight.hpp"
+#include "A2DParticleEmitter.hpp"
 #include "A2DSprite.hpp"
 #include "A2DTexture.hpp"
 #include "A2DTimer.hpp"
-#include "A2DVector3.hpp"
+#include <A2DVector3.hpp>
 
 #include <A2DTemplate.hpp>
 
