@@ -1,5 +1,6 @@
 // Local include
 #include <A2DEngine.hpp>
+#include <A2DInput.hpp>
 #include <WinMain.hpp>
 
 // External include
@@ -38,13 +39,16 @@ namespace Advanced2D
         , mVersionMinor(VERSION_MINOR)
         , mRevision(REVISION)
         , mScreenConfig(640, 480, 32, false)
+        , mpBackBuffer(nullptr)
+        , mpD3D(nullptr)
+        , mpDevice(nullptr)
+        , mpInput(nullptr)
+        , mpSpriteHandler(nullptr)
     {
         srand(static_cast<uint32>(time(NULL)));
 
         // set default value
         SetAppTitle("Advanced2D");
-
-        SetWindowHandle(0);
     }
 
     A2DEngine::~A2DEngine()
@@ -80,12 +84,15 @@ namespace Advanced2D
 
     int32 A2DEngine::Init(const ScreenProperties& aScreenConfig)
     {
-        //initialize Direct3D
+        //---------------------
+        // initialize Direct3D
+        //---------------------
+
         mpD3D = Direct3DCreate9(D3D_SDK_VERSION);
         if (nullptr == mpD3D) 
         { return 0; }
 
-        //get system desktop color depth
+        // get system desktop color depth
         D3DDISPLAYMODE displayMode;
         mpD3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &displayMode);
 
@@ -138,6 +145,12 @@ namespace Advanced2D
 
         //set a default material
         SetDefaultMaterial();
+
+        //------------------------
+        // initialize DirectInput
+        //------------------------
+
+        mpInput = new A2DInput(GetWindowHandle());
 
         return 1;
     }
@@ -228,9 +241,22 @@ namespace Advanced2D
             mFrameCountCore = 0;
         }
 
+        //-------
+        // Input
+        //-------
+        mpInput->Update();
+        UpdateKeyboard();
+        UpdateMouse();
+
+        //-------
+        // Game
+        //-------
         // Fast update with no timing
         GameUpdate();
 
+        //--------
+        // Render
+        //--------
         // Update with 60fps timing
         if ( !timedUpdate.StopWatch(14) ) 
         {
@@ -265,6 +291,58 @@ namespace Advanced2D
 
             // Done rendering
             RenderStop();
+        }
+    }
+
+    void A2DEngine::UpdateMouse()
+    {
+        static int32 oldPosX = 0;
+        static int32 oldPosY = 0;
+
+        int32 deltaX = mpInput->GetDeltaX();
+        int32 deltaY = mpInput->GetDeltaY();
+
+        //check mouse buttons 1-3
+        for (int32 n=0; n<4; ++n) 
+        {
+            if (mpInput->GetMouseButton(n))
+            { GameMouseButton(n); }
+        }
+
+        //check mouse position
+        if (mpInput->GetPosX() != oldPosX || mpInput->GetPosY() != oldPosY) 
+        {
+            GameMouseMove( mpInput->GetPosX(), mpInput->GetPosY() );
+            oldPosX = mpInput->GetPosX();
+            oldPosY = mpInput->GetPosY();
+        }
+
+        //check mouse motion
+        if (deltaX != 0 || deltaY ) 
+        { GameMouseMotion(deltaX, deltaY); }
+
+        //check mouse wheel
+        int32 wheel = mpInput->GetDeltaWheel();
+        if (wheel != 0)
+        { GameMouseWheel(wheel); }
+    }
+
+    void A2DEngine::UpdateKeyboard()
+    {
+        static char oldKeys[256];
+        for (int32 n=0; n<255; ++n)
+        {
+            //check for key press
+            if (mpInput->GetKeyState(n) & 0x80) 
+            {
+                GameKeyPress(n);
+                oldKeys[n] = mpInput->GetKeyState(n);
+            }//check for release
+            else if (oldKeys[n] & 0x80) 
+            {
+                GameKeyRelease(n);
+                oldKeys[n] = mpInput->GetKeyState(n);
+            }
         }
     }
 

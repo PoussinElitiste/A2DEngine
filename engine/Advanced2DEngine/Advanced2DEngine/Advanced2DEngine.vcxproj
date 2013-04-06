@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\source\A2DCamera.cpp" />
     <ClCompile Include="..\..\source\A2DEngine.cpp" />
+    <ClCompile Include="..\..\source\A2DInput.cpp" />
     <ClCompile Include="..\..\source\A2DLight.cpp" />
     <ClCompile Include="..\..\source\A2DMesh.cpp" />
     <ClCompile Include="..\..\source\A2DParticleEmitter.cpp" />
@@ -25,6 +26,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\A2DCamera.hpp" />
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
+    <ClInclude Include="..\..\include\A2DInput.hpp" />
     <ClInclude Include="..\..\include\A2DLight.hpp" />
     <ClInclude Include="..\..\include\A2DMesh.hpp" />
     <ClInclude Include="..\..\include\A2DParticleEmitter.hpp" />

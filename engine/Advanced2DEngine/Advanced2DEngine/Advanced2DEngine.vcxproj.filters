@@ -11,6 +11,7 @@
     <ClCompile Include="..\..\source\A2DSprite.cpp" />
     <ClCompile Include="..\..\source\A2DTexture.cpp" />
     <ClCompile Include="..\..\source\A2DParticleEmitter.cpp" />
+    <ClCompile Include="..\..\source\A2DInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
@@ -26,5 +27,6 @@
     <ClInclude Include="..\..\include\A2DSprite.hpp" />
     <ClInclude Include="..\..\include\A2DTexture.hpp" />
     <ClInclude Include="..\..\include\A2DParticleEmitter.hpp" />
+    <ClInclude Include="..\..\include\A2DInput.hpp" />
   </ItemGroup>
 </Project>

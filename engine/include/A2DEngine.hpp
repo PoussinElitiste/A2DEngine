@@ -10,10 +10,11 @@
 
 // local Include
 #include "A2DString.hpp"
-#include "A2DTypes.hpp"
+#include <A2DTypes.hpp>
 
 // core include
 #include "A2DCamera.hpp"
+#include "A2DInput.hpp"
 #include "A2DMesh.hpp"
 #include "A2DLight.hpp"
 #include "A2DParticleEmitter.hpp"
@@ -31,19 +32,33 @@
 //macro to read the key states
 #define KEY_DOWN(vk) ((GetAsyncKeyState(vk) & 0x8000)?1:0)
 
+//------------
 // Engine API
-extern Advanced2D::bool8 gGameOver;
+//------------
+using namespace Advanced2D;
 
-extern Advanced2D::bool8 GamePreload();
-extern Advanced2D::bool8 GameInit(HWND);
+// Game
+extern bool8 gGameOver;
+extern bool8 GamePreload();
+extern bool8 GameInit(HWND);
 extern void GameUpdate();
 extern void GameEnd();
 extern void GameRender3D();
 extern void GameRender2D();
 
+// Input
+extern void GameKeyPress( int32 aKey );
+extern void GameKeyRelease( int32 aKey );
+extern void GameMouseButton( int32 aButton );
+extern void GameMouseMotion( int32 aX, int32 aY );
+extern void GameMouseMove( int32 aX, int32 aY );
+extern void GameMouseWheel( int32 aWheel );
+
 namespace Advanced2D
 {
     typedef D3DCOLOR A2DColor;
+
+    class A2DInput;
 
     class A2DEngine
     {
@@ -87,6 +102,8 @@ namespace Advanced2D
         long32 mFrameCountReal;
         long32 mFrameRateReal;
 
+        A2DInput* mpInput;
+
     public:
         A2DEngine();
         virtual ~A2DEngine();
@@ -95,6 +112,8 @@ namespace Advanced2D
         int32 Init(const ScreenProperties& aScreenConfig);
         void Close();
         void Update();
+        void UpdateKeyboard();
+        void UpdateMouse();
         void Message(const A2DString& aMessage, const A2DString& aTitle = "ADVANCED_2D");
         void FatalError(const A2DString& aMessage, const A2DString& aTitle = "FATAL_ERROR");
         void ShutDown();
