@@ -34,7 +34,7 @@ namespace Advanced2D
         mParticles.clear();
     }
 
-    bool8 A2DParticleEmitter::LoadSpriteImage(string aImageFile)
+    bool8 A2DParticleEmitter::LoadSpriteImage(A2DString aImageFile)
     {
         mpImage = new A2DTexture();
         return mpImage->Load(aImageFile);

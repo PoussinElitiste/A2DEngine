@@ -2,7 +2,7 @@
 #include <sstream>
 
 // Local include
-#include "WinMain.hpp"
+#include <WinMain.hpp>
 #include "A2DEngine.hpp"
 #include "A2DTimer.hpp"
 using namespace Advanced2D;

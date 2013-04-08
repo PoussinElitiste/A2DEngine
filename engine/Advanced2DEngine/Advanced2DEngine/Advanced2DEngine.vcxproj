@@ -11,12 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\A2DAudio.cpp" />
     <ClCompile Include="..\..\source\A2DCamera.cpp" />
     <ClCompile Include="..\..\source\A2DEngine.cpp" />
     <ClCompile Include="..\..\source\A2DInput.cpp" />
     <ClCompile Include="..\..\source\A2DLight.cpp" />
     <ClCompile Include="..\..\source\A2DMesh.cpp" />
     <ClCompile Include="..\..\source\A2DParticleEmitter.cpp" />
+    <ClCompile Include="..\..\source\A2DSample.cpp" />
     <ClCompile Include="..\..\source\A2DSprite.cpp" />
     <ClCompile Include="..\..\source\A2DTexture.cpp" />
     <ClCompile Include="..\..\source\A2DTimer.cpp" />
@@ -24,12 +26,14 @@
     <ClCompile Include="..\..\source\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\A2DAudio.hpp" />
     <ClInclude Include="..\..\include\A2DCamera.hpp" />
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
     <ClInclude Include="..\..\include\A2DInput.hpp" />
     <ClInclude Include="..\..\include\A2DLight.hpp" />
     <ClInclude Include="..\..\include\A2DMesh.hpp" />
     <ClInclude Include="..\..\include\A2DParticleEmitter.hpp" />
+    <ClInclude Include="..\..\include\A2DSample.hpp" />
     <ClInclude Include="..\..\include\A2DSprite.hpp" />
     <ClInclude Include="..\..\include\A2DString.hpp" />
     <ClInclude Include="..\..\include\A2DTemplate.hpp" />
@@ -69,15 +73,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)..\lib\</OutDir>
-    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)../include/</IncludePath>
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)..\include;$(SolutionDir)..\FMOD</IncludePath>
     <TargetName>$(ProjectName)D</TargetName>
-    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\Engine\lib</LibraryPath>
+    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\lib;$(SolutionDir)..\FMOD</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)..\lib\</OutDir>
-    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)../include/</IncludePath>
-    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\Engine\lib</LibraryPath>
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)..\include;$(SolutionDir)..\FMOD</IncludePath>
+    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\lib;$(SolutionDir)..\FMOD</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

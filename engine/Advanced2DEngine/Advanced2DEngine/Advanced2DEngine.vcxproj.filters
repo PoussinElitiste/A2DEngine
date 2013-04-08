@@ -12,6 +12,8 @@
     <ClCompile Include="..\..\source\A2DTexture.cpp" />
     <ClCompile Include="..\..\source\A2DParticleEmitter.cpp" />
     <ClCompile Include="..\..\source\A2DInput.cpp" />
+    <ClCompile Include="..\..\source\A2DAudio.cpp" />
+    <ClCompile Include="..\..\source\A2DSample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
@@ -28,5 +30,7 @@
     <ClInclude Include="..\..\include\A2DTexture.hpp" />
     <ClInclude Include="..\..\include\A2DParticleEmitter.hpp" />
     <ClInclude Include="..\..\include\A2DInput.hpp" />
+    <ClInclude Include="..\..\include\A2DAudio.hpp" />
+    <ClInclude Include="..\..\include\A2DSample.hpp" />
   </ItemGroup>
 </Project>

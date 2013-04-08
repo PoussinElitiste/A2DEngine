@@ -2,35 +2,39 @@
 #define INC_ADVANCED2D_A2DENGINE_HPP
 
 // external include
-#include <iostream>
-#include <windows.h>
 #include <d3D9.h>
 #include <d3Dx9.h>
 #include <DxErr.h>
+#include <fmod.hpp>
+#include <iostream>
+#include <windows.h>
 
 // local Include
-#include "A2DString.hpp"
+#include <A2DString.hpp>
+#include <A2DArray.hpp>
 #include <A2DTypes.hpp>
+#include <A2DTemplate.hpp>
 
 // core include
-#include "A2DCamera.hpp"
-#include "A2DInput.hpp"
-#include "A2DMesh.hpp"
-#include "A2DLight.hpp"
-#include "A2DParticleEmitter.hpp"
-#include "A2DSprite.hpp"
-#include "A2DTexture.hpp"
-#include "A2DTimer.hpp"
+#include <A2DAudio.hpp>
+#include <A2DCamera.hpp>
+#include <A2DInput.hpp>
+#include <A2DMesh.hpp>
+#include <A2DLight.hpp>
+#include <A2DParticleEmitter.hpp>
+#include <A2DSample.hpp>
+#include <A2DSprite.hpp>
+#include <A2DTexture.hpp>
+#include <A2DTimer.hpp>
 #include <A2DVector3.hpp>
-
-#include <A2DTemplate.hpp>
 
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0
 #define REVISION 0
 
-//macro to read the key states
-#define KEY_DOWN(vk) ((GetAsyncKeyState(vk) & 0x8000)?1:0)
+// macro to read the key states(deprecated)
+// TODO: replace by A2DInput
+// #define KEY_DOWN(vk) ((GetAsyncKeyState(vk) & 0x8000)?1:0)
 
 //------------
 // Engine API
@@ -103,6 +107,8 @@ namespace Advanced2D
         long32 mFrameRateReal;
 
         A2DInput* mpInput;
+
+        A2DAudio* mpAudio;
 
     public:
         A2DEngine();

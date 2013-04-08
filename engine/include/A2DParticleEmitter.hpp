@@ -2,19 +2,14 @@
 #define INC_ADVANCED2D_A2DPARTICULE_EMITTER_HPP
 
 // external include
-#include <string>
-#include <vector>
-
-// local include
-#include <A2DSprite.hpp>
-#include <A2DTexture.hpp>
-#include <A2DVector3.hpp>
-
-using std::string;
-using std::vector;
+#include <A2DEngine.hpp>
 
 namespace Advanced2D
 {
+    // Forward
+    class A2DSprite;
+    class A2DTexture;
+
     class A2DParticleEmitter
     {
     public:
@@ -22,9 +17,10 @@ namespace Advanced2D
         virtual ~A2DParticleEmitter();
 
     private:
-        typedef vector<A2DSprite*>::iterator iter;
+        typedef A2DArray<A2DSprite*> Particles;
+        typedef A2DArray<A2DSprite*>::iterator iter;
 
-        vector<A2DSprite*> mParticles;
+        Particles mParticles;
         A2DTexture* mpImage;
         A2DVector3 mPosition;
         double64 mDirection;
@@ -51,7 +47,7 @@ namespace Advanced2D
         void SetScale(double64 aValue) { mScale = aValue; }
     
     public:
-        bool LoadSpriteImage(string aImageFile);
+        bool LoadSpriteImage(A2DString aImageFile);
         void Draw();
         void Update();
         void Add();

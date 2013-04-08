@@ -23,13 +23,13 @@ namespace Advanced2D
         return mInfo.Height; 
     };
 
-    bool A2DTexture::Load(std::string filename, D3DCOLOR transcolor)
+    bool A2DTexture::Load(A2DString aFilename, D3DCOLOR transcolor)
     {
         //standard Windows return value
         HRESULT result;
     
         //get width and height from bitmap file
-        result = D3DXGetImageInfoFromFile(filename.c_str(), &mInfo);
+        result = D3DXGetImageInfoFromFile(aFilename.c_str(), &mInfo);
         if (result != D3D_OK) 	{
             mpTexture = NULL;
             return 1;
@@ -38,7 +38,7 @@ namespace Advanced2D
         //create the new mpTexture by loading a bitmap image file
         D3DXCreateTextureFromFileEx( 
             gpEngine->GetDevice(), //Direct3D device object
-            filename.c_str(),      //bitmap filename
+            aFilename.c_str(),      //bitmap filename
             mInfo.Width,            //bitmap image width
             mInfo.Height,           //bitmap image height
             1,                     //mip-map levels (1 for no chain)

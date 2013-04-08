@@ -6,7 +6,7 @@
 // External include
 #include <cstdlib>
 #include <ctime>
-#include <list>
+//#include <list>
 #include <sstream>
 
 namespace Advanced2D
@@ -53,6 +53,14 @@ namespace Advanced2D
 
     A2DEngine::~A2DEngine()
     {
+        if (mpAudio)
+        {
+            mpAudio->StopAll();
+            delete mpAudio;
+        }
+
+        delete mpInput;
+
         if (mpDevice)
         {
             mpDevice->Release();
@@ -151,6 +159,13 @@ namespace Advanced2D
         //------------------------
 
         mpInput = new A2DInput(GetWindowHandle());
+
+        //------------------------
+        // initialize Audio
+        //------------------------
+        mpAudio = new A2DAudio();
+        if (!mpAudio->Init()) 
+        { return 0; }
 
         return 1;
     }
@@ -292,6 +307,11 @@ namespace Advanced2D
             // Done rendering
             RenderStop();
         }
+
+        //--------
+        // Audio
+        //--------
+        mpAudio->Update();
     }
 
     void A2DEngine::UpdateMouse()

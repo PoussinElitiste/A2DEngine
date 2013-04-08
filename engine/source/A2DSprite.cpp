@@ -36,7 +36,7 @@ namespace Advanced2D
         { delete mpImage; }
     }
 
-    bool8 A2DSprite::LoadSpriteImage(const std::string& aFilename, D3DCOLOR aTranscolor)
+    bool8 A2DSprite::LoadSpriteImage(const A2DString& aFilename, D3DCOLOR aTranscolor)
     {
         //if image already exists, free it
         if ( mImageLoaded && mpImage != NULL) 

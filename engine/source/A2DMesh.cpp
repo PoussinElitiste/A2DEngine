@@ -1,9 +1,6 @@
 // local include
 #include <A2DEngine.hpp>
 
-// external include
-#include <string.h>
-
 namespace Advanced2D
 {
     A2DMesh::A2DTransformationInfos::A2DTransformationInfos( const A2DRenderVector& aPosition, const A2DRenderVector& aVelocity

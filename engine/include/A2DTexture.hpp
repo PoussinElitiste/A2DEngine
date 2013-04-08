@@ -11,7 +11,7 @@ namespace Advanced2D
         A2DTexture();
         ~A2DTexture();
     //	bool create(int width,int height);
-        bool Load(std::string filename, D3DCOLOR transcolor = D3DCOLOR_XRGB(0,0,0));
+        bool Load(A2DString aFilename, D3DCOLOR transcolor = D3DCOLOR_XRGB(0,0,0));
         void Release();
         LPDIRECT3DTEXTURE9 GetTexture() { return mpTexture; }
         int GetWidth();

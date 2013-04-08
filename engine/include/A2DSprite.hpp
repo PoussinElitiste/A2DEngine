@@ -1,11 +1,7 @@
 #ifndef INC_ADVANCED2D_A2DSPRITE_HPP
 #define INC_ADVANCED2D_A2DSPRITE_HPP
 
-// external include
-#include <string.h>
-
 // local include
-#include <A2DTexture.hpp>
 #include <A2DTimer.hpp>
 
 namespace Advanced2D
@@ -32,6 +28,7 @@ namespace Advanced2D
         //virtual const ObjType& operator()( Category aCoord ) const { return mObj[aCoord]; }
     };
 
+    class A2DTexture;
     class A2DSprite
     {
     public:
@@ -146,7 +143,7 @@ namespace Advanced2D
         void SetCollisionMethod(A2DCollisionType aType) { mCollisionMethod = aType; }
 
     public:
-        bool8 LoadSpriteImage(const std::string& aFilename, D3DCOLOR aTranscolor = D3DCOLOR_XRGB(255,0,255));
+        bool8 LoadSpriteImage(const A2DString& aFilename, D3DCOLOR aTranscolor = D3DCOLOR_XRGB(255,0,255));
         void SetImage(A2DTexture* aTexture);
         void Move();
         void Animate();
