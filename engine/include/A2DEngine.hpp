@@ -161,8 +161,9 @@ namespace Advanced2D
         bool8 GetMaximizeProcessor() const { return mMaximizeProcesser; }
         void SetMaximizeProcessor(bool8 aValue) { mMaximizeProcesser = aValue; }
 
-        // Accessor Second order
         A2DString GetVersionText() const;
+
+        A2DAudio* Audio() { return mpAudio; }
     }; //class
 
 }; // namespace

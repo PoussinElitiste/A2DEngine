@@ -2,9 +2,6 @@
 #include <A2DEngine.hpp>
 using namespace Advanced2D;
 
-// external include
-#include <dinput.h>
-
 A2DParticleEmitter* gpParticle;
 A2DSprite* gpCursor;
 

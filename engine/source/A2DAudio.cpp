@@ -98,6 +98,18 @@ namespace Advanced2D
         return (index > 0);
     }
 
+    bool8 A2DAudio::IsPlaying(A2DSample* apSample)
+    {
+        if (apSample == nullptr) 
+        { return false; }
+
+        int32 index;
+        FMOD_Channel_GetIndex(apSample->mpChannel, &index);
+        
+        // FMOD returns 99 if sample is playing, 0 if not
+        return (index > 0);
+    }
+
     A2DSample* A2DAudio::FindSample(A2DString aName)
     {
         A2DSample* pSample = nullptr;

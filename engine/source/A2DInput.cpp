@@ -56,6 +56,6 @@ namespace Advanced2D
 
     bool8 A2DInput::GetMouseButton( char aButton )
     {
-        return (mMouseState.rgbButtons[aButton] & 0x80) > 0;
+        return (mMouseState.rgbButtons[aButton] & 0x80) != 0;
     }
 }; // namespace

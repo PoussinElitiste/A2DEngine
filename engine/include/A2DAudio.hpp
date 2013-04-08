@@ -34,6 +34,7 @@ namespace Advanced2D
         void StopAll();
         void StopAllExcept(A2DString aName);
         bool8 IsPlaying(A2DString aName);
+        bool8 IsPlaying(A2DSample* apSample);
         bool8 SampleExists(A2DString aName);
         A2DSample* FindSample(A2DString aName);
     }; // class 

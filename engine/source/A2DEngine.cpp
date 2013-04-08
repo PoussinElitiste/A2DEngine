@@ -6,7 +6,6 @@
 // External include
 #include <cstdlib>
 #include <ctime>
-//#include <list>
 #include <sstream>
 
 namespace Advanced2D
@@ -44,6 +43,7 @@ namespace Advanced2D
         , mpDevice(nullptr)
         , mpInput(nullptr)
         , mpSpriteHandler(nullptr)
+        , mpAudio(nullptr)
     {
         srand(static_cast<uint32>(time(NULL)));
 
@@ -147,17 +147,12 @@ namespace Advanced2D
         if (result != D3D_OK) 
         { return 0; }
 
-        //call game initialization extern function
-        if (!GameInit(GetWindowHandle()))
-        { return 0; }
-
         //set a default material
         SetDefaultMaterial();
 
         //------------------------
         // initialize DirectInput
         //------------------------
-
         mpInput = new A2DInput(GetWindowHandle());
 
         //------------------------
@@ -165,6 +160,10 @@ namespace Advanced2D
         //------------------------
         mpAudio = new A2DAudio();
         if (!mpAudio->Init()) 
+        { return 0; }
+
+        //call game initialization extern function
+        if (!GameInit(GetWindowHandle()))
         { return 0; }
 
         return 1;
