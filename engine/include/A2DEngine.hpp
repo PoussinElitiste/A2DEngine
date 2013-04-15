@@ -34,7 +34,7 @@
 
 // macro to read the key states(deprecated)
 // TODO: replace by A2DInput
-// #define KEY_DOWN(vk) ((GetAsyncKeyState(vk) & 0x8000)?1:0)
+#define KEY_DOWN(vk) ((GetAsyncKeyState(vk) & 0x8000)?1:0)
 
 //------------
 // Engine API

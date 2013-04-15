@@ -143,3 +143,11 @@ void GameRender2D()
     pPartD->Draw();
     pPartE->Draw();
 }
+
+// unused Event
+void GameKeyPress( int32 aKey ) {}
+void GameKeyRelease( int32 aKey ) {}
+void GameMouseButton( int32 aButton ) {}
+void GameMouseMotion( int32 aX, int32 aY ) {}
+void GameMouseMove( int32 aX, int32 aY ) {}
+void GameMouseWheel( int32 aWheel ) {}
