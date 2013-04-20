@@ -47,6 +47,8 @@ namespace Advanced2D
         A2DPrespectiveInfos& GetPerspective() { return mPerspective; }
         const A2DPrespectiveInfos& GetPerspective() const { return mPerspective; }
 
+        void SetPosition(const A2DRenderVector& aValue) { mLocalisation.mPosition = aValue; }
+        void SetTarget(const A2DRenderVector& aValue) { mLocalisation.mTarget = aValue; }
         void SetLocalisation(const A2DLocalisationInfos& aLocalisation) { mLocalisation = aLocalisation; }
         const A2DLocalisationInfos& GetLocalisation() const { return mLocalisation; }
 

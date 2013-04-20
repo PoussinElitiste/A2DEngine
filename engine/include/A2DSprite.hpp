@@ -2,7 +2,7 @@
 #define INC_ADVANCED2D_A2DSPRITE_HPP
 
 // local include
-#include <A2DTimer.hpp>
+#include <A2DEntity.hpp>
 
 namespace Advanced2D
 {
@@ -18,7 +18,7 @@ namespace Advanced2D
         WIDTH = 0,
         HEIGHT,
         MAX_DIM
-    };
+    }; // Enum
 
     struct A2DSpriteInfos
         : public A2DBaseCategory< Advanced2D::A2DSpriteDim, Advanced2D::MAX_DIM, uint32 >
@@ -30,6 +30,7 @@ namespace Advanced2D
 
     class A2DTexture;
     class A2DSprite
+        : public A2DEntity
     {
     public:
         typedef A2DVectCoordinate Coordinate;

@@ -4,7 +4,8 @@
 namespace Advanced2D
 {
     A2DSprite::A2DSprite()
-        : mpImage(NULL)
+        : A2DEntity(RENDER_2D)
+        , mpImage(NULL)
         , mImageLoaded(false)
         , mPosition(0, 0)
         , mVelocity(0, 0)
@@ -80,8 +81,8 @@ namespace Advanced2D
         RECT srcRect = { fx, fy, fx + Get(WIDTH), fy + Get(HEIGHT) };
 
         //draw the sprite frame
-        this->Transform();
-        gpEngine->GetSpriteHandle()->Draw( this->mpImage->GetTexture(), &srcRect, NULL, NULL, mColor );
+        Transform();
+        gpEngine->GetSpriteHandle()->Draw( mpImage->GetTexture(), &srcRect, NULL, NULL, mColor );
     }
 
     void A2DSprite::Move()

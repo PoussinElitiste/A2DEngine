@@ -14,6 +14,7 @@
     <ClCompile Include="..\..\source\A2DAudio.cpp" />
     <ClCompile Include="..\..\source\A2DCamera.cpp" />
     <ClCompile Include="..\..\source\A2DEngine.cpp" />
+    <ClCompile Include="..\..\source\A2DEntity.cpp" />
     <ClCompile Include="..\..\source\A2DInput.cpp" />
     <ClCompile Include="..\..\source\A2DLight.cpp" />
     <ClCompile Include="..\..\source\A2DMesh.cpp" />
@@ -26,11 +27,14 @@
     <ClCompile Include="..\..\source\WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\A2DArray.hpp" />
     <ClInclude Include="..\..\include\A2DAudio.hpp" />
     <ClInclude Include="..\..\include\A2DCamera.hpp" />
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
+    <ClInclude Include="..\..\include\A2DEntity.hpp" />
     <ClInclude Include="..\..\include\A2DInput.hpp" />
     <ClInclude Include="..\..\include\A2DLight.hpp" />
+    <ClInclude Include="..\..\include\A2DList.hpp" />
     <ClInclude Include="..\..\include\A2DMesh.hpp" />
     <ClInclude Include="..\..\include\A2DParticleEmitter.hpp" />
     <ClInclude Include="..\..\include\A2DSample.hpp" />

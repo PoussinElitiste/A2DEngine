@@ -12,12 +12,14 @@
 // local Include
 #include <A2DString.hpp>
 #include <A2DArray.hpp>
+#include <A2DList.hpp>
 #include <A2DTypes.hpp>
 #include <A2DTemplate.hpp>
 
 // core include
 #include <A2DAudio.hpp>
 #include <A2DCamera.hpp>
+#include <A2DEntity.hpp>
 #include <A2DInput.hpp>
 #include <A2DMesh.hpp>
 #include <A2DLight.hpp>
@@ -49,6 +51,8 @@ extern void GameUpdate();
 extern void GameEnd();
 extern void GameRender3D();
 extern void GameRender2D();
+extern void GameEntityUpdate(A2DEntity* apEntity);
+extern void GameEntityRender(A2DEntity* apEntity);
 
 // Input
 extern void GameKeyPress( int32 aKey );
@@ -107,34 +111,52 @@ namespace Advanced2D
         long32 mFrameRateReal;
 
         A2DInput* mpInput;
-
         A2DAudio* mpAudio;
+        A2DList<A2DEntity*> mpEntities;
 
     public:
         A2DEngine();
         virtual ~A2DEngine();
 
     public:
-        int32 Init(const ScreenProperties& aScreenConfig);
-        void Close();
         void Update();
         void UpdateKeyboard();
         void UpdateMouse();
+
+        // Debug
+        A2DString GetVersionText() const;
         void Message(const A2DString& aMessage, const A2DString& aTitle = "ADVANCED_2D");
         void FatalError(const A2DString& aMessage, const A2DString& aTitle = "FATAL_ERROR");
+
+        // Service
+        int32 Init(const ScreenProperties& aScreenConfig);
+        void Close();
         void ShutDown();
         void ClearScene(A2DColor aColor);
+        int32 Release();
+
         void SetIdentity(); // reset scene Position
         void SetDefaultMaterial();
         void SetAmbient(A2DColor aColorValue);
+
+        // Render
         int32 RenderStart();
         int32 RenderStop();
         int32 Render2DStart();
         int32 Render2DStop();
-        int32 Release();
 
+        // entities
+        void AddEntity(A2DEntity* apEntity);
+        A2DEntity* FindEntity(int32 aObjectType);
+        A2DEntity* FindEntity(A2DString aName);
+        int32 GetEntityCount() const;
+        void UpdateEntities();
+        void Draw3DEntities();
+        void Draw2DEntities();
+        void BuryEntities();
+
+    // accessor/mutator First order
     public:
-        // accessor/mutator First order
         bool8 IsPaused() const { return mPauseMode; }
         void SetPaused(bool8 aValue) { mPauseMode = aValue; }
 
@@ -161,11 +183,8 @@ namespace Advanced2D
         bool8 GetMaximizeProcessor() const { return mMaximizeProcesser; }
         void SetMaximizeProcessor(bool8 aValue) { mMaximizeProcesser = aValue; }
 
-        A2DString GetVersionText() const;
-
         A2DAudio* Audio() { return mpAudio; }
     }; //class
-
 }; // namespace
 
 // define global A2DEngine object(visible everywhere!)

@@ -14,6 +14,7 @@
     <ClCompile Include="..\..\source\A2DInput.cpp" />
     <ClCompile Include="..\..\source\A2DAudio.cpp" />
     <ClCompile Include="..\..\source\A2DSample.cpp" />
+    <ClCompile Include="..\..\source\A2DEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
@@ -32,5 +33,8 @@
     <ClInclude Include="..\..\include\A2DInput.hpp" />
     <ClInclude Include="..\..\include\A2DAudio.hpp" />
     <ClInclude Include="..\..\include\A2DSample.hpp" />
+    <ClInclude Include="..\..\include\A2DEntity.hpp" />
+    <ClInclude Include="..\..\include\A2DArray.hpp" />
+    <ClInclude Include="..\..\include\A2DList.hpp" />
   </ItemGroup>
 </Project>

@@ -256,21 +256,17 @@ namespace Advanced2D
         }
 
         //-------
-        // Input
-        //-------
-        mpInput->Update();
-        UpdateKeyboard();
-        UpdateMouse();
-
-        //-------
         // Game
         //-------
         // Fast update with no timing
         GameUpdate();
 
-        //--------
-        // Render
-        //--------
+        //update entities
+        if (!mPauseMode) 
+        {
+            UpdateEntities();
+        }
+
         // Update with 60fps timing
         if ( !timedUpdate.StopWatch(14) ) 
         {
@@ -289,28 +285,183 @@ namespace Advanced2D
                 mFrameCountReal = 0;
             }
 
+            //-------
+            // Input
+            //-------
+            mpInput->Update();
+            UpdateKeyboard();
+            UpdateMouse();
+
+            //--------
+            // Audio
+            //--------
+            mpAudio->Update();
+
+            //--------
+            // Render
+            //--------
             //return to the origin
             SetIdentity();
 
-            // Begin rendering
-            RenderStart();
-
             // Allow game to 3D render
-            GameRender3D();
+            RenderStart();
+            {
+                // call render 2D callback
+                GameRender3D();
 
-            // Allow game to 2D render
-            Render2DStart();
-            GameRender2D();
-            Render2DStop();
+                //render 3D entities
+                if (!mPauseMode) { Draw3DEntities(); }
 
-            // Done rendering
+                // Allow game to 2D render
+                Render2DStart();
+                {
+                    // call render 2D callback
+                    GameRender2D();
+
+                    //render 2D entities
+                    if (!mPauseMode) { Draw2DEntities(); }    
+                }
+                Render2DStop();
+            }
             RenderStop();
         }
 
-        //--------
-        // Audio
-        //--------
-        mpAudio->Update();
+        //remove dead entities from the list
+        BuryEntities();
+    }
+
+    void A2DEngine::AddEntity(A2DEntity* apEntity)
+    {
+        static int id = 0;
+        apEntity->SetID(id);
+        mpEntities.push_back(apEntity);
+        ++id;
+    }
+
+    A2DEntity* A2DEngine::FindEntity(int32 aObjectType)
+    {
+        A2DList<A2DEntity*>::iterator iter = mpEntities.begin();
+        while (iter != mpEntities.end())
+        {
+            if ((*iter)->GetAlive() == true && (*iter)->GetObjectType() == aObjectType)
+            { return *iter; }
+            else
+            { ++iter; }
+        }
+
+        return nullptr;
+    }
+
+    A2DEntity* A2DEngine::FindEntity(A2DString aName)
+    {
+        A2DList<A2DEntity*>::iterator iter = mpEntities.begin();
+        while (iter != mpEntities.end())
+        {
+            if ( (*iter)->GetAlive() == true && (*iter)->GetName() == aName )
+            { return *iter; }
+            else
+            { ++iter; }
+        }
+
+        return nullptr;
+    }
+
+    int32 A2DEngine::GetEntityCount() const 
+    {
+        return mpEntities.size();
+    }
+
+    void A2DEngine::UpdateEntities()
+    {
+        A2DList<A2DEntity*>::iterator iter;
+        A2DEntity* pEntity;
+        
+        iter = mpEntities.begin();
+        while (iter != mpEntities.end())
+        {
+            //point local sprite to object in the list
+            pEntity = *iter;
+
+            //is this entity alive?
+            if ( pEntity->GetAlive() ) 
+            {
+                // move/animate entity
+                pEntity->Move();
+                pEntity->Animate();
+
+                // tell game that this entity has been updated
+                GameEntityUpdate( pEntity );
+
+                // see if this entity will auto-expire
+                if ( pEntity->GetLifetime() > 0)
+                {
+                    if ( pEntity->lifetimeExpired() ) 
+                    {
+                        pEntity->SetAlive(false);
+                    }
+                }
+            }
+            ++iter;
+        }
+    }
+
+    void A2DEngine::Draw3DEntities()
+    {
+        A2DEntity* pEntity;
+        A2DList<A2DEntity*>::iterator iter = mpEntities.begin();
+        while (iter != mpEntities.end())
+        {
+            //temporary pointer
+            pEntity = *iter;
+            
+            //is this a 3D entity?
+            if ( pEntity->GetRenderType() == RENDER_3D ) 
+            {
+                //is this entity in use?
+                if ( pEntity->GetAlive() && pEntity->GetVisible() ) 
+                {
+                    pEntity->Draw();
+                    GameEntityRender( pEntity );
+                }
+            }
+            ++iter;
+        }
+    }
+
+    void A2DEngine::Draw2DEntities()
+    {
+        A2DEntity* pEntity;
+        A2DList<A2DEntity*>::iterator iter = mpEntities.begin();
+        while (iter != mpEntities.end()) 
+        {
+            //temporary pointer
+            pEntity = *iter;
+            //is this a 2D entity?
+            if ( pEntity->GetRenderType() == RENDER_2D ) 
+            {
+                //is this entity in use?
+                if ( pEntity->GetAlive() && pEntity->GetVisible() ) 
+                {
+                    pEntity->Draw();
+                    GameEntityRender( pEntity );
+                }
+            }
+            ++iter;
+        }
+    }
+
+    void A2DEngine::BuryEntities()
+    {
+        A2DList<A2DEntity*>::iterator iter = mpEntities.begin();
+        while (iter != mpEntities.end()) 
+        {
+            if ( (*iter)->GetAlive() == false ) 
+            {
+                iter = mpEntities.erase( iter );
+            }
+            else 
+            { ++iter; }
+        }
     }
 
     void A2DEngine::UpdateMouse()

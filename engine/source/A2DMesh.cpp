@@ -12,7 +12,8 @@ namespace Advanced2D
     {}
 
     A2DMesh::A2DMesh()
-        : mpMesh(NULL)
+        : A2DEntity(RENDER_3D) 
+        , mpMesh(NULL)
         , mpD3DXMaterials(NULL)
         , mpMatBuffer(NULL)
         , mpMaterials(NULL)
@@ -55,7 +56,7 @@ namespace Advanced2D
             , &mpMesh ); //resulting mesh
 
         if (result != D3D_OK) 
-            { return false; }
+        { return false; }
 
         // extract material properties and texture names from material buffer
         mpD3DXMaterials = static_cast<LPD3DXMATERIAL>(mpMatBuffer->GetBufferPointer());
@@ -100,19 +101,20 @@ namespace Advanced2D
         mTransform = aTransform;
     }
 
-
-    void A2DMesh::CreateSphere(float aRadius, int aSlices, int aStacks)
+    void A2DMesh::CreateSphere(float32 aRadius, int32 aSlices, int32 aStacks)
     {
         D3DXCreateSphere(gpEngine->GetDevice(), aRadius, aSlices, aStacks, &mpMesh, NULL);
     }
 
-    void A2DMesh::CreateCube(float aWidth, float aHeight, float aDepth)
+    void A2DMesh::CreateCube(float32 aWidth, float32 aHeight, float32 aDepth)
     {
         D3DXCreateBox(gpEngine->GetDevice(), aWidth, aHeight, aDepth, &mpMesh, NULL);
     }
 
     void A2DMesh::Draw()
     {
+        Transform();
+
         if (mMaterialCount == 0) 
         {
             mpMesh->DrawSubset(0);
@@ -144,12 +146,12 @@ namespace Advanced2D
         }
     }
 
-    void A2DMesh::Tranform()
+    void A2DMesh::Transform()
     {
         //set rotation matrix
-        float x = D3DXToRadian(mTransform.mRotate.x);
-        float y = D3DXToRadian(mTransform.mRotate.y);
-        float z = D3DXToRadian(mTransform.mRotate.z);
+        float32 x = D3DXToRadian(mTransform.mRotate.x);
+        float32 y = D3DXToRadian(mTransform.mRotate.y);
+        float32 z = D3DXToRadian(mTransform.mRotate.z);
         D3DXMatrixRotationYawPitchRoll(&mMatRotate, x, y, z);
 
         //set scaling matrix
@@ -163,26 +165,50 @@ namespace Advanced2D
         gpEngine->GetDevice()->SetTransform(D3DTS_WORLD, &mMatWorld);
     }
 
-    void A2DMesh::Rotate(const A2DRenderVector& aRot)
+    void A2DMesh::Rotate(const A2DRenderVector& aValue)
     {
-        Rotate(aRot.x, aRot.y, aRot.z);
+        Rotate(aValue.x, aValue.y, aValue.z);
     }
 
-    void A2DMesh::Rotate(float x, float y, float z)
+    void A2DMesh::Rotate(float32 x, float32 y, float32 z)
     {
         mTransform.mRotate.x += x;
         mTransform.mRotate.y += y;
         mTransform.mRotate.z += z;
     }
 
-    void A2DMesh::Update()
+    void A2DMesh::Translate(const A2DRenderVector& aValue)
+    {
+        Translate(aValue.x, aValue.y, aValue.z);
+    }
+
+    void A2DMesh::Translate(float32 x, float32 y, float32 z)
+    {
+        mTransform.mPosition.x += x;
+        mTransform.mPosition.y += y;
+        mTransform.mPosition.z += z;
+    }
+
+    void A2DMesh::Scale(const A2DRenderVector& aValue)
+    {
+        Scale(aValue.x, aValue.y, aValue.z);
+    }
+
+    void A2DMesh::Scale(float32 x, float32 y, float32 z)
+    {
+        mTransform.mScale.x += x;
+        mTransform.mScale.y += y;
+        mTransform.mScale.z += z;
+    }
+
+    void A2DMesh::Move()
     {
         mTransform.mPosition.x += mTransform.mVelocity.x;
         mTransform.mPosition.y += mTransform.mVelocity.y;
         mTransform.mPosition.z += mTransform.mVelocity.z;
     }
 
-    void A2DMesh::LimitBoundary(float left, float right, float top, float bottom, float back, float front)
+    void A2DMesh::LimitBoundary(float32 left, float32 right, float32 top, float32 bottom, float32 back, float32 front)
     {
         const A2DRenderVector& position = mTransform.mPosition; 
         if ( position.x < left || position.x > right) 
