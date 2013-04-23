@@ -3,6 +3,8 @@
 
 // local include
 #include <A2DEntity.hpp>
+#include <A2DTemplate.hpp>
+#include <A2DVector3.hpp>
 
 namespace Advanced2D
 {

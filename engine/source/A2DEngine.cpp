@@ -306,7 +306,7 @@ namespace Advanced2D
             // Allow game to 3D render
             RenderStart();
             {
-                // call render 2D callback
+                // call render 3D callback
                 GameRender3D();
 
                 //render 3D entities
@@ -315,11 +315,11 @@ namespace Advanced2D
                 // Allow game to 2D render
                 Render2DStart();
                 {
-                    // call render 2D callback
-                    GameRender2D();
-
                     //render 2D entities
-                    if (!mPauseMode) { Draw2DEntities(); }    
+                    if (!mPauseMode) { Draw2DEntities(); } 
+
+                    // call render 2D callback after render enties(like Font)
+                    GameRender2D();
                 }
                 Render2DStop();
             }

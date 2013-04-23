@@ -65,10 +65,10 @@ namespace Advanced2D
     void A2DSprite::Transform()
     {
         D3DXMATRIX mat;
-        D3DXVECTOR2 scale( (float)mScaling, (float)mScaling );
-        D3DXVECTOR2 center( (float)( Get(WIDTH)*mScaling )/2, (float)( Get(HEIGHT)*mScaling )/2 );
-        D3DXVECTOR2 trans( (float)Get(X), (float)Get(Y) );
-        D3DXMatrixTransformation2D( &mat, NULL, 0, &scale, &center, (float)mRotation, &trans );
+        D3DXVECTOR2 scale( (float32)mScaling, (float32)mScaling );
+        D3DXVECTOR2 center( (float32)( Get(WIDTH)*mScaling )/2, (float32)( Get(HEIGHT)*mScaling )/2 );
+        D3DXVECTOR2 trans( (float32)Get(X), (float32)Get(Y) );
+        D3DXMatrixTransformation2D( &mat, NULL, 0, &scale, &center, (float32)mRotation, &trans );
 
         gpEngine->GetSpriteHandle()->SetTransform(&mat);
     }
