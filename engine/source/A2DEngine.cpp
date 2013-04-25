@@ -267,6 +267,18 @@ namespace Advanced2D
             UpdateEntities();
         }
 
+        //--------
+        // Physic
+        //--------
+        //perform global collision testing
+        if (!mPauseMode /*&& mCollisionTimer.stopwatch(50)*/) 
+        {
+            TestForCollisions();
+        }
+
+        //--------
+        // Timer
+        //--------
         // Update with 60fps timing
         if ( !timedUpdate.StopWatch(14) ) 
         {
@@ -462,6 +474,146 @@ namespace Advanced2D
             else 
             { ++iter; }
         }
+    }
+
+    void A2DEngine::TestForCollisions()
+    {
+        A2DList<A2DEntity*>::iterator first;
+        A2DList<A2DEntity*>::iterator second;
+        
+        A2DSprite* pSprite1;
+        A2DSprite* pSprite2;
+        first = mpEntities.begin();
+        while (first != mpEntities.end() )
+        {
+            //we only care about sprite collisions
+            if ( (*first)->GetRenderType() == RENDER_2D )
+            {
+                //point local sprite to sprite contained in the list
+                pSprite1 = static_cast<A2DSprite*>(*first);
+
+                //if this entity is alive and visible...
+                if ( pSprite1->GetAlive() && pSprite1->GetVisible() && pSprite1->IsCollidable() )
+                {
+                    //test all other entities for collision
+                    second = mpEntities.begin();
+                    while (second != mpEntities.end() )
+                    {
+                        //point local sprite to sprite contained in the list
+                        pSprite2 = static_cast<A2DSprite*>(*second);
+
+                        //if other entity is active and not same as first entity...
+                        if ( pSprite2->GetAlive() && pSprite2->GetVisible() 
+                            && pSprite2->IsCollidable() && pSprite1 != pSprite2 )
+                        {
+                            //test for collision
+                            if ( Collision(pSprite1, pSprite2 ) ) 
+                            {
+                                //notify game of collision
+                                GameEntityCollision( pSprite1, pSprite2 );
+                            }
+                        }
+
+                        //go to the next sprite in the list
+                        ++second;
+                    }
+                }
+
+                // go to the next sprite in the list
+                ++first;
+            }// render2d
+        } // while
+    }
+
+    bool8 A2DEngine::Collision(A2DSprite* apSprite1, A2DSprite* apSprite2)
+    {
+        switch (apSprite1->GetCollisionMethod()) 
+        {
+            case COLLISION_RECT:
+                {
+                    return CollisionBR(apSprite1, apSprite2);
+                }
+                break;
+            case COLLISION_DIST:
+                {
+                    return CollisionD(apSprite1, apSprite2);
+                }
+                break;
+            case COLLISION_NONE:
+            default:
+            break;
+        }
+
+        return false;
+    }
+
+    // Bounding Rectangle
+    bool8 A2DEngine::CollisionBR(A2DSprite* apSprite1, A2DSprite* apSprite2)
+    {
+        bool8 result = false;
+        A2DRectangle rectA(
+            apSprite1->Get(X),
+            apSprite1->Get(Y),
+            apSprite1->Get(X) + apSprite1->Get(WIDTH) * apSprite1->GetScale(),
+            apSprite1->Get(Y) + apSprite1->Get(HEIGHT) * apSprite1->GetScale());
+
+        A2DRectangle rectB(
+            apSprite2->Get(X),
+            apSprite2->Get(Y),
+            apSprite2->Get(X) + apSprite2->Get(WIDTH) * apSprite2->GetScale(),
+            apSprite2->Get(Y) + apSprite2->Get(HEIGHT) * apSprite2->GetScale());
+
+        //are any of sprite b’s corners intersecting sprite a?
+        result = ( 
+            rectA.IsInside( rectB.GetLeft(), rectB.GetTop() )
+            || rectA.IsInside( rectB.GetRight(), rectB.GetTop() ) 
+            || rectA.IsInside( rectB.GetLeft(), rectB.GetBottom() ) 
+            || rectA.IsInside( rectB.GetRight(), rectB.GetBottom() )
+            );
+
+        return result;
+    }
+
+
+    bool8 A2DEngine::CollisionD(A2DSprite* apSprite1, A2DSprite* apSprite2)
+    {
+        double64 radius1, radius2;
+
+        //calculate radius 1
+        if ( apSprite1->Get(WIDTH) > apSprite1->Get(HEIGHT) )
+        {
+            radius1 = (apSprite1->Get(WIDTH) * apSprite1->GetScale()) / 2.;
+        }
+        else
+        {
+            radius1 = (apSprite1->Get(HEIGHT) * apSprite1->GetScale()) / 2.;
+        }
+
+        //point = center of sprite 1
+        double64 x1 = apSprite1->Get(X) + radius1;
+        double64 y1 = apSprite1->Get(Y) + radius1;
+        A2DVector3 vector1(x1, y1, 0.0);
+
+        //calculate radius 2
+        if ( apSprite2->Get(WIDTH) > apSprite2->Get(HEIGHT) )
+        {
+            radius2 = (apSprite2->Get(WIDTH) * apSprite2->GetScale()) / 2.;
+        }
+        else
+        {
+            radius2 = (apSprite2->Get(HEIGHT) * apSprite2->GetScale()) / 2.;
+        }
+
+        //point = center of sprite 2
+        double64 x2 = apSprite2->Get(X) + radius2;
+        double64 y2 = apSprite2->Get(Y) + radius2;
+        A2DVector3 vector2(x2, y2, 0.0);
+
+        //calculate distance
+        double64 dist = vector1.Distance2D( vector2 );
+
+        //return distance comparison
+        return (dist < radius1 + radius2);
     }
 
     void A2DEngine::UpdateMouse()

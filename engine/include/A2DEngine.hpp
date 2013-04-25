@@ -25,6 +25,7 @@
 #include <A2DMesh.hpp>
 #include <A2DLight.hpp>
 #include <A2DParticleEmitter.hpp>
+#include <A2DRectangle.hpp>
 #include <A2DSample.hpp>
 #include <A2DSprite.hpp>
 #include <A2DTexture.hpp>
@@ -62,6 +63,9 @@ extern void GameMouseButton( int32 aButton );
 extern void GameMouseMotion( int32 aX, int32 aY );
 extern void GameMouseMove( int32 aX, int32 aY );
 extern void GameMouseWheel( int32 aWheel );
+
+// Physic
+extern void GameEntityCollision(A2DEntity* apFirst, A2DEntity* apSecond);
 
 namespace Advanced2D
 {
@@ -155,6 +159,12 @@ namespace Advanced2D
         void Draw3DEntities();
         void Draw2DEntities();
         void BuryEntities();
+
+        // Physic
+        bool8 Collision(A2DSprite* apSprite1, A2DSprite* apSprite2);
+        bool8 CollisionBR(A2DSprite* apSprite1, A2DSprite* apSprite2);
+        bool8 CollisionD(A2DSprite* apSprite1, A2DSprite* apSprite2);
+        void TestForCollisions();
 
     // accessor/mutator First order
     public:

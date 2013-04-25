@@ -16,6 +16,7 @@
     <ClCompile Include="..\..\source\A2DSample.cpp" />
     <ClCompile Include="..\..\source\A2DEntity.cpp" />
     <ClCompile Include="..\..\source\A2DFont.cpp" />
+    <ClCompile Include="..\..\source\A2DRectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
@@ -39,5 +40,6 @@
     <ClInclude Include="..\..\include\A2DList.hpp" />
     <ClInclude Include="..\..\include\A2DFont.hpp" />
     <ClInclude Include="..\..\include\A2DFStream.hpp" />
+    <ClInclude Include="..\..\include\A2DRectangle.hpp" />
   </ItemGroup>
 </Project>

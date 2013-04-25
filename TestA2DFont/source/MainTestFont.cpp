@@ -174,13 +174,13 @@ void GameRender2D()
     }
 
     gpVerdana10->SetScale( 1.5f );
-    gpVerdana10->Print(600,140, gpEngine->GetVersionText(), 0xFF991111);
+    gpVerdana10->Print(600, 140, gpEngine->GetVersionText(), 0xFF991111);
     os.str("");
     os << "SCREEN : " << static_cast<float32>(1000.0f/gpEngine->GetFrameRateReal()) << " ms";
-    gpVerdana10->Print(600,180, os.str(), 0xFF119911);
+    gpVerdana10->Print(600, 180, os.str(), 0xFF119911);
     os.str("");
     os << "CORE : " << static_cast<float32>(1000.0f/gpEngine->GetFrameRateCore()) << " ms";
-    gpVerdana10->Print(600,220,os.str(),0xFF119911);
+    gpVerdana10->Print(600, 220, os.str(), 0xFF119911);
 }
 
 // unused Event
@@ -191,3 +191,4 @@ void GameMouseButton(int32 aButton) {}
 void GameMouseMotion(int32 aX,int32 aY) {}
 void GameMouseMove(int32 aX,int32 aY) {}
 void GameMouseWheel(int32 wheel) {}
+void GameEntityCollision(A2DEntity* apFirst, A2DEntity* apSecond) {}

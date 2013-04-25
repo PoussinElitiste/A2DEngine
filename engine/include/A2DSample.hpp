@@ -6,6 +6,7 @@
 
 namespace Advanced2D
 {
+    // Wrapper to interact with FMOD
     class A2DSample
     {
     public:
