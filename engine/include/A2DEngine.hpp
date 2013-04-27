@@ -31,6 +31,7 @@
 #include <A2DTexture.hpp>
 #include <A2DTimer.hpp>
 #include <A2DVector3.hpp>
+#include <A2DMath.hpp>
 
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0

@@ -18,6 +18,7 @@
     <ClCompile Include="..\..\source\A2DFont.cpp" />
     <ClCompile Include="..\..\source\A2DInput.cpp" />
     <ClCompile Include="..\..\source\A2DLight.cpp" />
+    <ClCompile Include="..\..\source\A2DMath.cpp" />
     <ClCompile Include="..\..\source\A2DMesh.cpp" />
     <ClCompile Include="..\..\source\A2DParticleEmitter.cpp" />
     <ClCompile Include="..\..\source\A2DRectangle.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="..\..\include\A2DInput.hpp" />
     <ClInclude Include="..\..\include\A2DLight.hpp" />
     <ClInclude Include="..\..\include\A2DList.hpp" />
+    <ClInclude Include="..\..\include\A2DMath.hpp" />
     <ClInclude Include="..\..\include\A2DMesh.hpp" />
     <ClInclude Include="..\..\include\A2DParticleEmitter.hpp" />
     <ClInclude Include="..\..\include\A2DRectangle.hpp" />
