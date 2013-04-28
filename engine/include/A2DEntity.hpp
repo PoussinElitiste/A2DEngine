@@ -23,8 +23,8 @@ namespace Advanced2D
    private:
         int32 mId;
         A2DString mName;
-        bool8 mVisible;
-        bool8 mAlive;
+        bool8 mIsVisible;
+        bool8 mIsAlive;
         A2DRenderType mRenderType;
         int32 mObjectType;
         int32 mLifetimeLength;
@@ -45,11 +45,11 @@ namespace Advanced2D
         A2DString GetName() { return mName; }
         void SetName(A2DString aValue) { mName = aValue; }
 
-        bool8 GetVisible() { return mVisible; }
-        void SetVisible(bool8 aValue) { mVisible = aValue; }
+        bool8 IsVisible() { return mIsVisible; }
+        void SetVisible(bool8 aValue) { mIsVisible = aValue; }
 
-        bool8 GetAlive() { return mAlive; }
-        void SetAlive(bool8 aValue) { mAlive = aValue; }
+        bool8 IsAlive() { return mIsAlive; }
+        void SetAlive(bool8 aValue) { mIsAlive = aValue; }
 
         int32 GetLifetime() { return mLifetimeLength; }
         void SetLifetime(int32 aMilliseconds) 

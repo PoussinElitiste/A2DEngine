@@ -355,7 +355,7 @@ namespace Advanced2D
         A2DList<A2DEntity*>::iterator iter = mpEntities.begin();
         while (iter != mpEntities.end())
         {
-            if ((*iter)->GetAlive() == true && (*iter)->GetObjectType() == aObjectType)
+            if ((*iter)->IsAlive() == true && (*iter)->GetObjectType() == aObjectType)
             { return *iter; }
             else
             { ++iter; }
@@ -369,7 +369,7 @@ namespace Advanced2D
         A2DList<A2DEntity*>::iterator iter = mpEntities.begin();
         while (iter != mpEntities.end())
         {
-            if ( (*iter)->GetAlive() == true && (*iter)->GetName() == aName )
+            if ( (*iter)->IsAlive() == true && (*iter)->GetName() == aName )
             { return *iter; }
             else
             { ++iter; }
@@ -395,7 +395,7 @@ namespace Advanced2D
             pEntity = *iter;
 
             //is this entity alive?
-            if ( pEntity->GetAlive() ) 
+            if ( pEntity->IsAlive() ) 
             {
                 // move/animate entity
                 pEntity->Move();
@@ -430,7 +430,7 @@ namespace Advanced2D
             if ( pEntity->GetRenderType() == RENDER_3D ) 
             {
                 //is this entity in use?
-                if ( pEntity->GetAlive() && pEntity->GetVisible() ) 
+                if ( pEntity->IsAlive() && pEntity->IsVisible() ) 
                 {
                     pEntity->Draw();
                     GameEntityRender( pEntity );
@@ -452,7 +452,7 @@ namespace Advanced2D
             if ( pEntity->GetRenderType() == RENDER_2D ) 
             {
                 //is this entity in use?
-                if ( pEntity->GetAlive() && pEntity->GetVisible() ) 
+                if ( pEntity->IsAlive() && pEntity->IsVisible() ) 
                 {
                     pEntity->Draw();
                     GameEntityRender( pEntity );
@@ -467,7 +467,7 @@ namespace Advanced2D
         A2DList<A2DEntity*>::iterator iter = mpEntities.begin();
         while (iter != mpEntities.end()) 
         {
-            if ( (*iter)->GetAlive() == false ) 
+            if ( (*iter)->IsAlive() == false ) 
             {
                 iter = mpEntities.erase( iter );
             }
@@ -493,17 +493,17 @@ namespace Advanced2D
                 pSprite1 = static_cast<A2DSprite*>(*first);
 
                 //if this entity is alive and visible...
-                if ( pSprite1->GetAlive() && pSprite1->GetVisible() && pSprite1->IsCollidable() )
+                if ( pSprite1->IsAlive() && pSprite1->IsVisible() && pSprite1->IsCollidable() )
                 {
                     //test all other entities for collision
                     second = mpEntities.begin();
-                    while (second != mpEntities.end() )
+                    while ( second != mpEntities.end() )
                     {
                         //point local sprite to sprite contained in the list
                         pSprite2 = static_cast<A2DSprite*>(*second);
 
                         //if other entity is active and not same as first entity...
-                        if ( pSprite2->GetAlive() && pSprite2->GetVisible() 
+                        if ( pSprite2->IsAlive() && pSprite2->IsVisible() 
                             && pSprite2->IsCollidable() && pSprite1 != pSprite2 )
                         {
                             //test for collision

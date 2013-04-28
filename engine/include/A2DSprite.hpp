@@ -38,12 +38,6 @@ namespace Advanced2D
         typedef A2DVectCoordinate Coordinate;
 
     private:
-        bool8 mIsVisible;
-        bool8 mIsAlive;
-        int32 mLifeTimeLength;
-        A2DTimer mLifeTimeTimer;
-        int32 mObjectType;
-
         A2DVector3 mPosition;
         A2DVector3 mVelocity;
         bool8 mImageLoaded;
@@ -100,12 +94,6 @@ namespace Advanced2D
         void SetSize(int32 aWidth, int32 aHeight) { mDimensions.Set(WIDTH, aWidth); mDimensions.Set(HEIGHT, aHeight); }
         void SetDimension(A2DSpriteDim aDim, int32 aValue) { mDimensions.Set(aDim, aValue); }
         uint32 Get(A2DSpriteDim aDim) { return mDimensions(aDim); }
-
-        bool8 IsVisible() const { return mIsVisible; }
-        void SetVisible(bool8 aFlag) { mIsVisible = aFlag; }
-
-        bool8 IsAlive() const { return mIsAlive; }
-        void SetAlive(bool8 aFlag) { mIsAlive = aFlag; }
 
         int32 GetState() { return mState; }
         void SetState(int32 aValue) { mState = aValue; }
