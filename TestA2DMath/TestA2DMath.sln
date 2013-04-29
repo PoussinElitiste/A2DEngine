@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DMath", "TestA2DMath\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DLinearVelocity", "TestA2DLinearVelocity\TestA2DLinearVelocity.vcxproj", "{27E46614-96E5-4989-B81F-8CC9841612AD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DAngleToTarget", "TestA2DAngleToTarget\TestA2DAngleToTarget.vcxproj", "{BF89B030-455B-45AE-8968-CC709CAFE39B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{27E46614-96E5-4989-B81F-8CC9841612AD}.Debug|Win32.Build.0 = Debug|Win32
 		{27E46614-96E5-4989-B81F-8CC9841612AD}.Release|Win32.ActiveCfg = Release|Win32
 		{27E46614-96E5-4989-B81F-8CC9841612AD}.Release|Win32.Build.0 = Release|Win32
+		{BF89B030-455B-45AE-8968-CC709CAFE39B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BF89B030-455B-45AE-8968-CC709CAFE39B}.Debug|Win32.Build.0 = Debug|Win32
+		{BF89B030-455B-45AE-8968-CC709CAFE39B}.Release|Win32.ActiveCfg = Release|Win32
+		{BF89B030-455B-45AE-8968-CC709CAFE39B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

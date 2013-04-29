@@ -113,9 +113,6 @@ void GameRender2D()
 
 void GameKeyRelease(int32 aKey)
 {
-    if (aKey == DIK_ESCAPE) 
-    { gpEngine->ShutDown(); }
-
     switch (aKey) 
     {
     case DIK_ESCAPE:

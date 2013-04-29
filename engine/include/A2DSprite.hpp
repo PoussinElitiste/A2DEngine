@@ -85,7 +85,9 @@ namespace Advanced2D
         void SetPosition(const A2DVector3& aPosition) { mPosition = aPosition; }
         void SetPosition(double64 aX, double64 aY) { mPosition.Set(aX, aY, 0.); }
         double64 Get(Coordinate aCoord) { return mPosition(aCoord); }
-        //void Set(Coordinate aCoord, double64 aValue) { mPosition.Set(aCoord, aValue); }
+        // Not advice to do this, risk of confusion
+        // TODO: find better solution
+        void Set(Coordinate aCoord, double64 aValue) { mPosition(aCoord) = aValue; }
 
         const A2DVector3& GetVelocity() { return mVelocity; }
         void SetVelocity(const A2DVector3& aVelocity) { mVelocity = aVelocity; }

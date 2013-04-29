@@ -76,8 +76,8 @@ namespace Advanced2D
     void A2DSprite::Draw()
     {
         //calculate source frame location
-        int fx = (mCurFrame % mAnimColumns) * Get(WIDTH);
-        int fy = (mCurFrame / mAnimColumns) * Get(HEIGHT);
+        int32 fx = (mCurFrame % mAnimColumns) * Get(WIDTH);
+        int32 fy = (mCurFrame / mAnimColumns) * Get(HEIGHT);
         RECT srcRect = { fx, fy, fx + Get(WIDTH), fy + Get(HEIGHT) };
 
         //draw the sprite frame
