@@ -20,7 +20,7 @@ using namespace Advanced2D;
 #define OBJECT_EXPLOSION 40
 
 A2DFont* gpFont;
-// A2DConsole* gpConsole;
+A2DConsole* gpConsole;
 A2DTexture* gpBulletImage;
 A2DTexture* gpAsteroidImage;
 A2DTexture* gpExplosionImage;
@@ -54,12 +54,12 @@ bool8 GameInit(HWND hwnd)
     gpEngine->AddEntity( pBackground );
 
     //create the console
-    //gpConsole = new A2DConsole();
-    //if (!gpConsole->Init()) 
-    //{
-    //    gpEngine->Message("Error initializing console");
-    //    return false;
-    //}
+    gpConsole = new A2DConsole();
+    if (!gpConsole->Init()) 
+    {
+        gpEngine->Message("Error initializing console");
+        return false;
+    }
 
     // create ship sprite
     A2DSprite* pShip = new A2DSprite();
@@ -133,30 +133,30 @@ bool8 GameInit(HWND hwnd)
     return true;
 }
 
-//void UpdateConsole()
-//{
-//    ostringstream ostr;
-//    int32 y = 0;
-//    gpConsole->Print(gpEngine->GetVersionText(), y++);
-//    ostr.str("");
-//    ostr << "REFRESH : " << (float32)(1000.0f/gpEngine->GetFrameRateCore()) << " ms (" << gpEngine->GetFrameRateCore() << " fps)";
-//    gpConsole->Print(ostr.str(), y++);
-//    ostr.str("");
-//    ostr << "Entities: " << gpEngine->GetEntityCount();
-//    gpConsole->Print(ostr.str(), y++);
-//    ostr.str("");
-//    ostr << "Nearest asteroid: " << gNearestAsteroid(X) << "," << gNearestAsteroid(Y);
-//    gpConsole->Print(ostr.str(), y++);
-//    ostr.str("");
-//    ostr << "Nearest distance: " << gNearestDistance;
-//    gpConsole->Print(ostr.str(), y++);
-//    ostr.str("");
-//    ostr << "Leading target: " << gTargetLead(X) << "," << gTargetLead(Y);
-//    gpConsole->Print(ostr.str(), y++);
-//    ostr.str("");
-//    ostr << "Angle to target: " << gShipAngle;
-//    gpConsole->Print(ostr.str(), y++);
-//}
+void UpdateConsole()
+{
+    ostringstream ostr;
+    int32 y = 0;
+    gpConsole->Print(gpEngine->GetVersionText(), y++);
+    ostr.str("");
+    ostr << "REFRESH(" << gpEngine->GetFrameRateCore() << " fps) : " << (float32)(1000.0f/gpEngine->GetFrameRateCore()) << " ms";
+    gpConsole->Print(ostr.str(), y++);
+    ostr.str("");
+    ostr << "Entities: " << gpEngine->GetEntityCount();
+    gpConsole->Print(ostr.str(), y++);
+    ostr.str("");
+    ostr << "Nearest asteroid: " << gNearestAsteroid(X) << "," << gNearestAsteroid(Y);
+    gpConsole->Print(ostr.str(), y++);
+    ostr.str("");
+    ostr << "Nearest distance: " << gNearestDistance;
+    gpConsole->Print(ostr.str(), y++);
+    ostr.str("");
+    ostr << "Leading target: " << gTargetLead(X) << "," << gTargetLead(Y);
+    gpConsole->Print(ostr.str(), y++);
+    ostr.str("");
+    ostr << "Angle to target: " << gShipAngle;
+    gpConsole->Print(ostr.str(), y++);
+}
 
 void addAsteroid()
 {
@@ -249,7 +249,7 @@ void TargetNearestAsteroid(A2DSprite* apAsteroid)
 
 void GameUpdate()
 {
-    // UpdateConsole();
+    UpdateConsole();
 }
 
 void GameRender3D()
@@ -264,7 +264,8 @@ void GameRender2D()
     gpFont->Print(1, SCREEN_HEIGHT-40, "Press SPACE to launch an asteroid!!!");
 
     // draw console
-    // if (gpConsole->IsShowing()) gpConsole->draw();
+    if (gpConsole->IsShowing()) 
+    { gpConsole->Draw(); }
 
     gNearestDistance = 999999;
 }
@@ -363,7 +364,7 @@ void GameKeyRelease(int32 aKey)
         break;
     case DIK_F12:
     case DIK_GRAVE:
-        //{ gpConsole->SetShowing( !gpConsole->IsShowing() ); }
+        { gpConsole->SetShowing( !gpConsole->IsShowing() ); }
         break;
     }
 }

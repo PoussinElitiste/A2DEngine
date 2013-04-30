@@ -19,6 +19,7 @@
 // core include
 #include <A2DAudio.hpp>
 #include <A2DCamera.hpp>
+#include <A2DConsole.hpp>
 #include <A2DEntity.hpp>
 #include <A2DFont.hpp>
 #include <A2DInput.hpp>

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\source\A2DAudio.cpp" />
     <ClCompile Include="..\..\source\A2DCamera.cpp" />
+    <ClCompile Include="..\..\source\A2DConsole.cpp" />
     <ClCompile Include="..\..\source\A2DEngine.cpp" />
     <ClCompile Include="..\..\source\A2DEntity.cpp" />
     <ClCompile Include="..\..\source\A2DFont.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="..\..\include\A2DArray.hpp" />
     <ClInclude Include="..\..\include\A2DAudio.hpp" />
     <ClInclude Include="..\..\include\A2DCamera.hpp" />
+    <ClInclude Include="..\..\include\A2DConsole.hpp" />
     <ClInclude Include="..\..\include\A2DEngine.hpp" />
     <ClInclude Include="..\..\include\A2DEntity.hpp" />
     <ClInclude Include="..\..\include\A2DFont.hpp" />

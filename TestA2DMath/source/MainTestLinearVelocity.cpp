@@ -18,7 +18,7 @@ using namespace Advanced2D;
 #define OBJECT_ROCKET 200
 
 A2DFont* gpFont;
-// A2DConsole* gpConsole;
+A2DConsole* gpConsole;
 A2DSprite* gpShip;
 A2DVector3 gVelocity;
 A2DTexture* gpRocketImage;
@@ -36,12 +36,12 @@ bool8 GamePreload()
 bool8 GameInit(HWND hwnd) 
 {
     //create the console
-    //gpConsole = new A2DConsole();
-    //if (!gpConsole->Init()) 
-    //{
-    //    gpEngine->Message("Error initializing console");
-    //    return false;
-    //}
+    gpConsole = new A2DConsole();
+    if (!gpConsole->Init()) 
+    {
+        gpEngine->Message("Error initializing console");
+        return false;
+    }
 
     // create ship sprite
     gpShip = new A2DSprite();
@@ -78,22 +78,22 @@ bool8 GameInit(HWND hwnd)
     return true;
 }
 
-//void UpdateConsole()
-//{
-//    ostringstream ostr;
-//    int32 y = 0;
-//    gpConsole->Print(gpEngine->GetVersionText(), y++);
-//    ostr.str("");
-//    ostr << "REFRESH : " << (float32)(1000.0f/gpEngine->GetFrameRateCore()) << " ms (" << gpEngine->GetFrameRateCore() << " fps)";
-//    gpConsole->Print(ostr.str(), y++);
-//    ostr.str("");
-//    ostr << "Entities: " << gpEngine->GetEntityCount();
-//    gpConsole->Print(ostr.str(), y++);
-//}
+void UpdateConsole()
+{
+    ostringstream ostr;
+    int32 y = 0;
+    gpConsole->Print(gpEngine->GetVersionText(), y++);
+    ostr.str("");
+    ostr << "REFRESH (" << gpEngine->GetFrameRateCore() << " fps): " << (float32)(1000.0f/gpEngine->GetFrameRateCore()) << " ms";
+    gpConsole->Print(ostr.str(), y++);
+    ostr.str("");
+    ostr << "Entities: " << gpEngine->GetEntityCount();
+    gpConsole->Print(ostr.str(), y++);
+}
 
 void GameUpdate()
 {
-    // UpdateConsole();
+    UpdateConsole();
 }
 
 void GameRender3D()
@@ -108,7 +108,8 @@ void GameRender2D()
     gpFont->Print(1, SCREEN_HEIGHT-40, "Press SPACE to fire!!!");
 
     // draw console
-    // if (gpConsole->IsShowing()) gpConsole->draw();
+    if (gpConsole->IsShowing()) 
+    { gpConsole->Draw(); }
 }
 
 void GameKeyRelease(int32 aKey)
@@ -120,14 +121,14 @@ void GameKeyRelease(int32 aKey)
         break;
     case DIK_F12:
     case DIK_GRAVE:
-        //{ gpConsole->SetShowing( !gpConsole->IsShowing() ); }
+        { gpConsole->SetShowing( !gpConsole->IsShowing() ); }
         break;
     }
 }
 
 void GameEnd() 
 {
-    //delete gpConsole;
+    delete gpConsole;
     delete gpFont;
     delete gpShip;
 }
