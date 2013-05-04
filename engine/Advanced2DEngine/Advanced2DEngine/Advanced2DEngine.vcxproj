@@ -86,15 +86,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)..\lib\</OutDir>
-    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)..\include;$(SolutionDir)..\FMOD</IncludePath>
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)..\include;$(SolutionDir)..\FMOD;$(SolutionDir)..\Pthread\include</IncludePath>
     <TargetName>$(ProjectName)D</TargetName>
-    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\lib;$(SolutionDir)..\FMOD</LibraryPath>
+    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\lib;$(SolutionDir)..\FMOD;$(SolutionDir)..\Pthread\lib\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)..\lib\</OutDir>
-    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)..\include;$(SolutionDir)..\FMOD</IncludePath>
-    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\lib;$(SolutionDir)..\FMOD</LibraryPath>
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)..\include;$(SolutionDir)..\FMOD;$(SolutionDir)..\Pthread\include</IncludePath>
+    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\lib;$(SolutionDir)..\FMOD;$(SolutionDir)..\Pthread\lib\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
