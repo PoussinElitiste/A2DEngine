@@ -25,17 +25,17 @@ namespace Advanced2D
         double64 LinearVelocityY(double64 aAngle);
         A2DVector3 LinearVelocity(double64 aAngle);
         double64 AngleToTarget(double64 aX1, double64 aY1, double64 aX2, double64 aY2);
-        double64 AngleToTarget(A2DVector3& aSource, A2DVector3& aTarget);
+        double64 AngleToTarget(A2DVector3 &aSource, A2DVector3 &aTarget);
         double64 Distance(double64 aX1, double64 aY1, double64 aX2, double64 aY2);
-        double64 Distance(A2DVector3& aVec1, A2DVector3& aVec2);
+        double64 Distance(A2DVector3 &aVec1, A2DVector3 &aVec2);
         double64 Length(double64 aX, double64 aY, double64 aZ);
-        double64 Length(A2DVector3& aVector);
+        double64 Length(A2DVector3 &aVector);
         double64 DotProduct(double64 aX1, double64 aY1, double64 aZ1, double64 aX2, double64 aY2, double64 aZ2);
-        double64 DotProduct(A2DVector3& aVec1, A2DVector3& aVec2);
+        double64 DotProduct(A2DVector3 &aVec1, A2DVector3 &aVec2);
         A2DVector3 CrossProduct(double64 aX1, double64 aY1, double64 aZ1, double64 aX2, double64 aY2, double64 aZ2);
-        A2DVector3 CrossProduct(A2DVector3& aVec1, A2DVector3& aVec2);
+        A2DVector3 CrossProduct(A2DVector3 &aVec1, A2DVector3 &aVec2);
         A2DVector3 Normal(double64 aX, double64 aY, double64 aZ);
-        A2DVector3 Normal(A2DVector3& aVector);
+        A2DVector3 Normal(A2DVector3 &aVector);
     }; // class
 } // namespace
 

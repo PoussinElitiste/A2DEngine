@@ -20,9 +20,9 @@ namespace Advanced2D
     public:
         A2DBaseCategory(){ memset(mObj, 0, sizeof(mObj)); }
         virtual ~A2DBaseCategory() {}
-        virtual void Set( Category aCoord, const ObjType& aValue ) { mObj[aCoord] = aValue; }
-        virtual const ObjType& operator()( Category aCoord ) const { return mObj[aCoord]; }
-        virtual ObjType& operator()( Category aCoord ) { return mObj[aCoord]; }
+        virtual void Set( Category aCoord, const ObjType &aValue ) { mObj[aCoord] = aValue; }
+        virtual const ObjType &operator()( Category aCoord ) const { return mObj[aCoord]; }
+        virtual ObjType &operator()( Category aCoord ) { return mObj[aCoord]; }
     }; // A2DCategoryTemplate
 } // Advanced2D
 

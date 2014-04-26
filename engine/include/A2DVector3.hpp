@@ -39,28 +39,28 @@ namespace Advanced2D
         A2DVector3();
         A2DVector3( double64 aX, double64 aY, double64 aZ = 0.);
         A2DVector3( int32 aX, int32 aY, int32 aZ = 0);
-        A2DVector3( const A2DVector3& aVect );
+        A2DVector3( const A2DVector3 &aVect );
         virtual ~A2DVector3();
        
         void Set( double64 aX, double64 aY, double64 aZ );
-        void Set( const A2DVector3& aVect );
-        A2DVector3& operator=( const A2DVector3& aVect );
+        void Set( const A2DVector3 &aVect );
+        A2DVector3& operator=( const A2DVector3 &aVect );
 
-        const A2DVector3& Move( const A2DVector3& aMove );
+        const A2DVector3& Move( const A2DVector3 &aMove );
         const A2DVector3& Scale( double64 aValue );
 
-        void operator+=( const A2DVector3& aVect );
-        void operator-=( const A2DVector3& aVect );
-        void operator*=( const A2DVector3& aVect );
-        void operator/=( const A2DVector3& aVect );
+        void operator+=( const A2DVector3 &aVect );
+        void operator-=( const A2DVector3 &aVect );
+        void operator*=( const A2DVector3 &aVect );
+        void operator/=( const A2DVector3 &aVect );
 
-        bool8 operator==( const A2DVector3& aVect ) const;
-        bool8 operator!=( const A2DVector3& aVect ) const;
+        bool8 operator==( const A2DVector3 &aVect ) const;
+        bool8 operator!=( const A2DVector3 &aVect ) const;
 
-        double64 Distance2D( const A2DVector3& aVect ) const;
+        double64 Distance2D( const A2DVector3 &aVect ) const;
         double64 Length() const;
-        double64 DotProduct( const A2DVector3& aVect ) const;
-        A2DVector3 CrossProduct( const A2DVector3& aVect ) const;
+        double64 DotProduct( const A2DVector3 &aVect ) const;
+        A2DVector3 CrossProduct( const A2DVector3 &aVect ) const;
         A2DVector3 Normal() const;
         A2DVector3 Inverse() const;
     }; // A2DVector3

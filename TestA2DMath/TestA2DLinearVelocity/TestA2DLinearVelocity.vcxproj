@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;$(SolutionDir)\Assets;$(SolutionDir)..\Engine\include;$(SolutionDir)..\Engine\FMOD</IncludePath>
     <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x86;$(SolutionDir)..\Engine\lib;$(SolutionDir)..\Engine\FMOD</LibraryPath>
   </PropertyGroup>

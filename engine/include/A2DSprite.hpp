@@ -82,7 +82,7 @@ namespace Advanced2D
         virtual ~A2DSprite();
 
         const A2DVector3& GetPosition() { return mPosition; }
-        void SetPosition(const A2DVector3& aPosition) { mPosition = aPosition; }
+        void SetPosition(const A2DVector3 &aPosition) { mPosition = aPosition; }
         void SetPosition(double64 aX, double64 aY) { mPosition.Set(aX, aY, 0.); }
         double64 Get(Coordinate aCoord) { return mPosition(aCoord); }
         // Not advice to do this, risk of confusion
@@ -90,7 +90,7 @@ namespace Advanced2D
         void Set(Coordinate aCoord, double64 aValue) { mPosition(aCoord) = aValue; }
 
         const A2DVector3& GetVelocity() { return mVelocity; }
-        void SetVelocity(const A2DVector3& aVelocity) { mVelocity = aVelocity; }
+        void SetVelocity(const A2DVector3 &aVelocity) { mVelocity = aVelocity; }
         void SetVelocity(double64 aVx, double64 aVy) { mVelocity.Set(aVx, aVy, 0.); }
 
         void SetSize(int32 aWidth, int32 aHeight) { mDimensions.Set(WIDTH, aWidth); mDimensions.Set(HEIGHT, aHeight); }

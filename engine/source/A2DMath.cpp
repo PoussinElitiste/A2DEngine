@@ -59,7 +59,7 @@ namespace Advanced2D
         return atan2(deltaY,deltaX);
     }
 
-    double64 A2DMath::AngleToTarget(A2DVector3& aSource, A2DVector3& aTarget)
+    double64 A2DMath::AngleToTarget(A2DVector3 &aSource, A2DVector3 &aTarget)
     {
         return AngleToTarget(aSource(X), aSource(Y), aTarget(X), aTarget(Y));
     }
@@ -71,7 +71,7 @@ namespace Advanced2D
         return sqrt(deltaX*deltaX + deltaY*deltaY);
     }
 
-    double64 A2DMath::Distance(A2DVector3& aVec1, A2DVector3& aVec2)
+    double64 A2DMath::Distance(A2DVector3 &aVec1, A2DVector3 &aVec2)
     {
         return Distance(aVec1(X), aVec1(Y), aVec2(X), aVec2(Y));
     }
@@ -81,7 +81,7 @@ namespace Advanced2D
         return sqrt(aX*aX + aY*aY + aZ*aZ);
     }
 
-    double64 A2DMath::Length(A2DVector3& aVector)
+    double64 A2DMath::Length(A2DVector3 &aVector)
     {
         return Length(aVector(X), aVector(Y), aVector(Z));
     }
@@ -91,7 +91,7 @@ namespace Advanced2D
         return (aX1*aX2 + aY1*aY2 + aZ1*aZ2);
     }
 
-    double64 A2DMath::DotProduct(A2DVector3& aVec1, A2DVector3& aVec2)
+    double64 A2DMath::DotProduct(A2DVector3 &aVec1, A2DVector3 &aVec2)
     {
         return DotProduct(aVec1(X), aVec1(Y), aVec1(Z), aVec2(X), aVec2(Y), aVec2(Z));
     }
@@ -104,7 +104,7 @@ namespace Advanced2D
         return A2DVector3(nx, ny, nz);
     }
 
-    A2DVector3 A2DMath::CrossProduct(A2DVector3& aVec1, A2DVector3& aVec2)
+    A2DVector3 A2DMath::CrossProduct(A2DVector3 &aVec1, A2DVector3 &aVec2)
     {
         return CrossProduct(aVec1(X), aVec1(Y), aVec1(Z), aVec2(X), aVec2(Y), aVec2(Z));
     }
@@ -120,7 +120,7 @@ namespace Advanced2D
         return A2DVector3(nx, ny, nz);
     }
 
-    A2DVector3 A2DMath::Normal(A2DVector3& aVector)
+    A2DVector3 A2DMath::Normal(A2DVector3 &aVector)
     {
         return Normal(aVector(X), aVector(Y), aVector(Z));
     }
