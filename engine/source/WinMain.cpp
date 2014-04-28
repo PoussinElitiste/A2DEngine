@@ -12,7 +12,7 @@ HWND gHWnd;
 int gnCmdShow;
 
 //declare global engine object
-Advanced2D::A2DEngine* gpEngine;
+Advanced2D::A2DEngine *gpEngine;
 bool gGameOver;
 
 //window event callback function

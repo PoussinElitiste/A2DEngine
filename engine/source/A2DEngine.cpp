@@ -17,7 +17,7 @@ namespace Advanced2D
         , mFullScreen(aFullScreen)
     {}
 
-    void A2DEngine::ScreenProperties::operator()(const ScreenProperties& aScreenConfig)
+    void A2DEngine::ScreenProperties::operator()(const ScreenProperties &aScreenConfig)
     {
         mWidth = aScreenConfig.mWidth;
         mHeight = aScreenConfig.mHeight;
@@ -90,7 +90,7 @@ namespace Advanced2D
         ShutDown();
     }
 
-    int32 A2DEngine::Init(const ScreenProperties& aScreenConfig)
+    int32 A2DEngine::Init(const ScreenProperties &aScreenConfig)
     {
         //---------------------
         // initialize Direct3D
@@ -481,8 +481,8 @@ namespace Advanced2D
         A2DList<A2DEntity*>::iterator first;
         A2DList<A2DEntity*>::iterator second;
         
-        A2DSprite* pSprite1;
-        A2DSprite* pSprite2;
+        A2DSprite *pSprite1;
+        A2DSprite *pSprite2;
         first = mpEntities.begin();
         while (first != mpEntities.end() )
         {
@@ -525,7 +525,7 @@ namespace Advanced2D
         } // while
     }
 
-    bool8 A2DEngine::Collision(A2DSprite* apSprite1, A2DSprite* apSprite2)
+    bool8 A2DEngine::Collision(A2DSprite *apSprite1, A2DSprite *apSprite2)
     {
         switch (apSprite1->GetCollisionMethod()) 
         {
@@ -548,7 +548,7 @@ namespace Advanced2D
     }
 
     // Bounding Rectangle
-    bool8 A2DEngine::CollisionBR(A2DSprite* apSprite1, A2DSprite* apSprite2)
+    bool8 A2DEngine::CollisionBR(A2DSprite *apSprite1, A2DSprite *apSprite2)
     {
         bool8 result = false;
         A2DRectangle rectA(
@@ -575,7 +575,7 @@ namespace Advanced2D
     }
 
 
-    bool8 A2DEngine::CollisionD(A2DSprite* apSprite1, A2DSprite* apSprite2)
+    bool8 A2DEngine::CollisionD(A2DSprite *apSprite1, A2DSprite *apSprite2)
     {
         double64 radius1, radius2;
 

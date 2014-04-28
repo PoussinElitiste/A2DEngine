@@ -18,8 +18,8 @@ namespace Advanced2D
 
     private:
         bool8 mShowing;
-        A2DSprite* mpPanel;
-        A2DFont* mpFont;
+        A2DSprite *mpPanel;
+        A2DFont *mpFont;
         int32 mCurrentLine;
         A2DArray<A2DString> mTextlines;
         A2DArray<A2DString>::iterator mIter;

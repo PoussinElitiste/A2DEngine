@@ -83,7 +83,7 @@ namespace Advanced2D
         public:
             ScreenProperties( int32 aWidth, int32 mHeight, int32 mColorDepth, bool8 mFullScreen);
 
-            void operator()(const ScreenProperties& aScreenConfig);
+            void operator()(const ScreenProperties &aScreenConfig);
 
             int32 mWidth;
             int32 mHeight;
@@ -136,7 +136,7 @@ namespace Advanced2D
         void FatalError(const A2DString& aMessage, const A2DString& aTitle = "FATAL_ERROR");
 
         // Service
-        int32 Init(const ScreenProperties& aScreenConfig);
+        int32 Init(const ScreenProperties &aScreenConfig);
         void Close();
         void ShutDown();
         void ClearScene(A2DColor aColor);
@@ -163,9 +163,9 @@ namespace Advanced2D
         void BuryEntities();
 
         // Physic
-        bool8 Collision(A2DSprite* apSprite1, A2DSprite* apSprite2);
-        bool8 CollisionBR(A2DSprite* apSprite1, A2DSprite* apSprite2);
-        bool8 CollisionD(A2DSprite* apSprite1, A2DSprite* apSprite2);
+        bool8 Collision(A2DSprite *apSprite1, A2DSprite *apSprite2);
+        bool8 CollisionBR(A2DSprite *apSprite1, A2DSprite *apSprite2);
+        bool8 CollisionD(A2DSprite *apSprite1, A2DSprite *apSprite2);
         void TestForCollisions();
 
     // accessor/mutator First order
@@ -190,8 +190,8 @@ namespace Advanced2D
         long32 GetFrameRateCore() const { return mFrameCountCore; } 
         long32 GetFrameRateReal() const { return mFrameCountReal; } 
 
-        ScreenProperties& GetScreenProperties() { return mScreenConfig; }
-        void SetScreenProperties( const ScreenProperties& aNewProperties) { mScreenConfig = aNewProperties; }
+        ScreenProperties &GetScreenProperties() { return mScreenConfig; }
+        void SetScreenProperties( const ScreenProperties &aNewProperties) { mScreenConfig = aNewProperties; }
 
         bool8 GetMaximizeProcessor() const { return mMaximizeProcesser; }
         void SetMaximizeProcessor(bool8 aValue) { mMaximizeProcesser = aValue; }
@@ -201,5 +201,5 @@ namespace Advanced2D
 }; // namespace
 
 // define global A2DEngine object(visible everywhere!)
-extern Advanced2D::A2DEngine* gpEngine;
+extern Advanced2D::A2DEngine *gpEngine;
 #endif // INC_ADVANCED2D_A2DENGINE_HPP

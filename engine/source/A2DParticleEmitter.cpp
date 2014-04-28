@@ -46,7 +46,7 @@ namespace Advanced2D
         double64 vx,vy;
 
         //create a new particle
-        A2DSprite* pSprite = new A2DSprite();
+        A2DSprite *pSprite = new A2DSprite();
         pSprite->SetImage(mpImage);
         pSprite->SetPosition(mPosition(X), mPosition(Y));
         

@@ -12,3 +12,5 @@ syntax: regexp
 .rc
 .lastbuildstate
 .ipch
+syntax: glob
+*.unsuccessfulbuild
