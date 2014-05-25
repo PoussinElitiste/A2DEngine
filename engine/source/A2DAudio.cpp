@@ -19,7 +19,7 @@ namespace Advanced2D
         FMOD_System_Release(mpSystem);
     }
 
-    bool8 A2DAudio::Init()
+    bool8 A2DAudio::init()
     {
         if (FMOD_System_Create(&mpSystem) != FMOD_OK) 
         {
@@ -34,17 +34,17 @@ namespace Advanced2D
         return true;
     }
 
-    void A2DAudio::Update()
+    void A2DAudio::update()
     {   
         FMOD_System_Update(mpSystem);
     }
     
-    A2DSample* A2DAudio::Load(A2DString aFilename)
+    A2DSamplePtr A2DAudio::load(A2DString aFilename)
     {
         if (aFilename.length() == 0) 
         { return false; }
 
-        A2DSample* pSample = new A2DSample();
+        A2DSamplePtr pSample = A2DSample::create();
         
         FMOD_RESULT res = FMOD_System_CreateSound(
             mpSystem, //FMOD system
@@ -61,13 +61,13 @@ namespace Advanced2D
         return pSample;
     }
 
-    bool8 A2DAudio::Load(A2DString aFilename, A2DString aName)
+    bool8 A2DAudio::load(A2DString aFilename, A2DString aName)
     {
         if (aFilename.length() == 0 || aName.length() == 0) 
         { return false; }
 
-        A2DSample* pSample = new A2DSample();
-        pSample->SetName(aName);
+        A2DSamplePtr pSample = A2DSample::create();
+        pSample->setName(aName);
 
         FMOD_RESULT res = FMOD_System_CreateSound(
             mpSystem, //FMOD system
@@ -85,9 +85,9 @@ namespace Advanced2D
         return true;
     }
 
-    bool8 A2DAudio::IsPlaying(A2DString aName)
+    bool8 A2DAudio::isPlaying(A2DString aName)
     {
-        A2DSample* pSamp = FindSample(aName);
+        A2DSamplePtr pSamp = findSample(aName);
         if (pSamp == nullptr) 
         { return false; }
 
@@ -98,7 +98,7 @@ namespace Advanced2D
         return (index > 0);
     }
 
-    bool8 A2DAudio::IsPlaying(A2DSample* apSample)
+    bool8 A2DAudio::isPlaying(A2DSamplePtr apSample)
     {
         if (apSample == nullptr) 
         { return false; }
@@ -110,12 +110,12 @@ namespace Advanced2D
         return (index > 0);
     }
 
-    A2DSample* A2DAudio::FindSample(A2DString aName)
+    A2DSamplePtr A2DAudio::findSample(A2DString aName)
     {
-        A2DSample* pSample = nullptr;
+        A2DSamplePtr pSample = nullptr;
         for (Iterator it = mSamples.begin(); it != mSamples.end(); ++it)
         {
-            if ((*it)->GetName() == aName) 
+            if ((*it)->getName() == aName) 
             {
                 pSample = (*it);
                 break;
@@ -125,10 +125,10 @@ namespace Advanced2D
         return pSample;
     }
 
-    bool8 A2DAudio::Play(A2DString aName)
+    bool8 A2DAudio::play(A2DString aName)
     {
         FMOD_RESULT res;
-        A2DSample* pSample = FindSample(aName);
+        A2DSamplePtr pSample = findSample(aName);
 
         if ( pSample!= nullptr && pSample->mpSample != NULL) 
         {
@@ -150,7 +150,7 @@ namespace Advanced2D
         return true;
     }
 
-    bool8 A2DAudio::Play(A2DSample* apSample)
+    bool8 A2DAudio::play(A2DSamplePtr apSample)
     {
         FMOD_RESULT res;
         if (apSample == nullptr) 
@@ -175,12 +175,12 @@ namespace Advanced2D
         return true;
     }
 
-    void A2DAudio::Stop(A2DString aName)
+    void A2DAudio::stop(A2DString aName)
     {
-        if (!IsPlaying(aName)) 
+        if (!isPlaying(aName)) 
         { return; }
 
-        A2DSample* pSample = FindSample(aName);
+        A2DSamplePtr pSample = findSample(aName);
 
         if ( pSample == nullptr ) 
         { return; }
@@ -188,7 +188,7 @@ namespace Advanced2D
         FMOD_Channel_Stop(pSample->mpChannel);
     }
 
-    void A2DAudio::StopAll()
+    void A2DAudio::stopAll()
     {
         for (Iterator it = mSamples.begin(); it != mSamples.end(); ++it)
         {
@@ -196,11 +196,11 @@ namespace Advanced2D
         }
     }
 
-    void A2DAudio::StopAllExcept(A2DString name)
+    void A2DAudio::stopAllExcept(A2DString name)
     {
         for (Iterator it = mSamples.begin(); it != mSamples.end(); ++it)
         {
-            if ( (*it)->GetName() != name ) 
+            if ( (*it)->getName() != name ) 
             {
                 FMOD_Channel_Stop( (*it)->mpChannel );
             }

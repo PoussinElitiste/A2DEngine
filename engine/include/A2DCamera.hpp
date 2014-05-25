@@ -43,14 +43,14 @@ namespace Advanced2D
         A2DCamera();
         virtual ~A2DCamera();
 
-        void SetPerspective(const A2DPrespectiveInfos& aPerspective) { mPerspective = aPerspective; }
-        A2DPrespectiveInfos& GetPerspective() { return mPerspective; }
-        const A2DPrespectiveInfos& GetPerspective() const { return mPerspective; }
+        void setPerspective(const A2DPrespectiveInfos& aPerspective) { mPerspective = aPerspective; }
+        A2DPrespectiveInfos& getPerspective() { return mPerspective; }
+        const A2DPrespectiveInfos& getPerspective() const { return mPerspective; }
 
-        void SetPosition(const A2DRenderVector& aValue) { mLocalisation.mPosition = aValue; }
-        void SetTarget(const A2DRenderVector& aValue) { mLocalisation.mTarget = aValue; }
-        void SetLocalisation(const A2DLocalisationInfos& aLocalisation) { mLocalisation = aLocalisation; }
-        const A2DLocalisationInfos& GetLocalisation() const { return mLocalisation; }
+        void setPosition(const A2DRenderVector& aValue) { mLocalisation.mPosition = aValue; }
+        void setTarget(const A2DRenderVector& aValue) { mLocalisation.mTarget = aValue; }
+        void setLocalisation(const A2DLocalisationInfos& aLocalisation) { mLocalisation = aLocalisation; }
+        const A2DLocalisationInfos& getLocalisation() const { return mLocalisation; }
 
         void Update();
 

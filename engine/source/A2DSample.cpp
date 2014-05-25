@@ -17,4 +17,10 @@ namespace Advanced2D
             mpSample = nullptr;
         }
     }
+
+    A2DSamplePtr A2DSample::create()
+    {
+       return A2DSamplePtr(new A2DSample());
+    }
+
 }; // namespace

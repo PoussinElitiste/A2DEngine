@@ -31,13 +31,13 @@ namespace Advanced2D
         POINT mPosition;
 
     public:
-        bool GetMouseButton( char aButton );
-        char GetKeyState(int aKey) { return mKeyState[aKey]; }
-        long GetPosX() { return mPosition.x; }
-        long GetPosY() { return mPosition.y; }
-        long GetDeltaX() { return mMouseState.lX; }
-        long GetDeltaY() { return mMouseState.lY; }
-        long GetDeltaWheel() { return mMouseState.lZ; }
+        bool getMouseButton( char8 aButton );
+        char getKeyState(int32 aKey) { return mKeyState[aKey]; }
+        long getPosX() { return mPosition.x; }
+        long getPosY() { return mPosition.y; }
+        long getDeltaX() { return mMouseState.lX; }
+        long getDeltaY() { return mMouseState.lY; }
+        long getDeltaWheel() { return mMouseState.lZ; }
 
     public:
         void Update();

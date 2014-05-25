@@ -54,10 +54,10 @@ int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aHPrevInstance, LPSTR aLPCmdL
 
     //get window caption string from engine
     char title[255];
-    sprintf_s(title, "%s", gpEngine->GetAppTitle().c_str());
+    sprintf_s(title, "%s", gpEngine->getAppTitle().c_str());
 
     //set window dimensions
-    A2DEngine::ScreenProperties& rScreenProperties = gpEngine->GetScreenProperties();
+    A2DEngine::ScreenProperties& rScreenProperties = gpEngine->getScreenProperties();
     windowRect.left = static_cast<long>(0);
     windowRect.right = static_cast<long>(rScreenProperties.mWidth);
     windowRect.top = static_cast<long>(0);
@@ -140,8 +140,8 @@ int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aHPrevInstance, LPSTR aLPCmdL
     UpdateWindow(gHWnd);
 
     //initialize the engine
-    gpEngine->SetWindowHandle(gHWnd);
-    if ( !gpEngine->Init(gpEngine->GetScreenProperties()) )
+    gpEngine->setWindowHandle(gHWnd);
+    if ( !gpEngine->init(gpEngine->getScreenProperties()) )
     {
         MessageBox(gHWnd, "[WinMain] Error initializing the engine", "Error", MB_OK);
         return 0;
@@ -157,7 +157,7 @@ int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aHPrevInstance, LPSTR aLPCmdL
             DispatchMessage(&msg);
         }
 
-        gpEngine->Update();
+        gpEngine->update();
     }
 
     if (rScreenProperties.mFullScreen) 
@@ -165,7 +165,7 @@ int WINAPI WinMain(HINSTANCE aHInstance, HINSTANCE aHPrevInstance, LPSTR aLPCmdL
         ShowCursor(TRUE);
     }
 
-    gpEngine->Close();
+    gpEngine->close();
 
     delete gpEngine;
 

@@ -1,0 +1,13 @@
+LogManager
+MemoryManager(lip/hastorage)
+ressourcemanager
+OBserver
+eventmanager
+singleton wrapper
+Facade
+IntrusivePointer
+context/state manager stack(hierarchical state machine?)
+threadScheduler
+hierachical node/window
+animation controller(interpollated)
+timeManger(timer, replay)

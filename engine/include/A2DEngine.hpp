@@ -55,149 +55,151 @@ extern void GameUpdate();
 extern void GameEnd();
 extern void GameRender3D();
 extern void GameRender2D();
-extern void GameEntityUpdate(A2DEntity* apEntity);
-extern void GameEntityRender(A2DEntity* apEntity);
+extern void GameEntityUpdate(A2DEntityPtr apEntity);
+extern void GameEntityRender(A2DEntityPtr apEntity);
 
 // Input
-extern void GameKeyPress( int32 aKey );
-extern void GameKeyRelease( int32 aKey );
-extern void GameMouseButton( int32 aButton );
+extern void GameKeyPress( uint32 aKey );
+extern void GameKeyRelease( uint32 aKey );
+extern void GameMouseButton( uint32 aButton );
+extern void GameMouseWheel( uint32 aWheel );
 extern void GameMouseMotion( int32 aX, int32 aY );
 extern void GameMouseMove( int32 aX, int32 aY );
-extern void GameMouseWheel( int32 aWheel );
 
 // Physic
-extern void GameEntityCollision(A2DEntity* apFirst, A2DEntity* apSecond);
+extern void GameEntityCollision(A2DEntityPtr apFirst, A2DEntityPtr apSecond);
 
 namespace Advanced2D
 {
-    typedef D3DCOLOR A2DColor;
+   typedef D3DCOLOR A2DColor;
 
-    class A2DInput;
+   class A2DInput;
 
-    class A2DEngine
-    {
-    public:
-        class ScreenProperties
-        {
-        public:
-            ScreenProperties( int32 aWidth, int32 mHeight, int32 mColorDepth, bool8 mFullScreen);
+   class A2DEngine
+   {
+      typedef A2DList<A2DEntityPtr>             EntityList;
+      typedef A2DList<A2DEntityPtr>::iterator   EntityListIt;
+   public:
+      class ScreenProperties
+      {
+      public:
+         ScreenProperties( int32 aWidth, int32 mHeight, int32 mColorDepth, bool8 mFullScreen);
 
-            void operator()(const ScreenProperties &aScreenConfig);
+         void operator()(const ScreenProperties &aScreenConfig);
 
-            int32 mWidth;
-            int32 mHeight;
-            int32 mColorDepth;
-            bool8 mFullScreen;
-        }; // ScreenProperties
+         int32 mWidth;
+         int32 mHeight;
+         int32 mColorDepth;
+         bool8 mFullScreen;
+      }; // ScreenProperties
 
-    private:
-        int32 mVersionMajor, mVersionMinor, mRevision;
+   private:
+      int32 mVersionMajor, mVersionMinor, mRevision;
 
-        HWND mWindowHandle;
+      HWND mWindowHandle;
 
-        LPDIRECT3D9 mpD3D;
-        LPDIRECT3DDEVICE9 mpDevice;
-        LPDIRECT3DSURFACE9 mpBackBuffer;
-        LPD3DXSPRITE mpSpriteHandler;
+      LPDIRECT3D9 mpD3D;
+      LPDIRECT3DDEVICE9 mpDevice;
+      LPDIRECT3DSURFACE9 mpBackBuffer;
+      LPD3DXSPRITE mpSpriteHandler;
 
-        A2DString mAppTitle;
+      A2DString mAppTitle;
 
-        ScreenProperties mScreenConfig;
+      ScreenProperties mScreenConfig;
 
-        bool8 mPauseMode;
-        A2DColor mAmbientColor;
-        bool8 mMaximizeProcesser;
+      bool8 mPauseMode;
+      A2DColor mAmbientColor;
+      bool8 mMaximizeProcesser;
 
-        A2DTimer mCoreTimer;
-        long32 mFrameCountCore;
-        long32 mFrameRateCore;
+      A2DTimer mCoreTimer;
+      long32 mFrameCountCore;
+      long32 mFrameRateCore;
 
-        A2DTimer mRealTimer;
-        long32 mFrameCountReal;
-        long32 mFrameRateReal;
+      A2DTimer mRealTimer;
+      long32 mFrameCountReal;
+      long32 mFrameRateReal;
 
-        A2DInput* mpInput;
-        A2DAudio* mpAudio;
-        A2DList<A2DEntity*> mpEntities;
+      A2DInput* mpInput;
+      A2DAudio* mpAudio;
+      EntityList mpEntities;
 
-    public:
-        A2DEngine();
-        virtual ~A2DEngine();
+   public:
+      A2DEngine();
+      virtual ~A2DEngine();
 
-    public:
-        void Update();
-        void UpdateKeyboard();
-        void UpdateMouse();
+   public:
+      void update();
+      void updateKeyboard();
+      void updateMouse();
 
-        // Debug
-        A2DString GetVersionText() const;
-        void Message(const A2DString& aMessage, const A2DString& aTitle = "ADVANCED_2D");
-        void FatalError(const A2DString& aMessage, const A2DString& aTitle = "FATAL_ERROR");
+      // Debug
+      A2DString getVersionText() const;
+      void message(const A2DString& aMessage, const A2DString& aTitle = "ADVANCED_2D");
+      void fatalError(const A2DString& aMessage, const A2DString& aTitle = "FATAL_ERROR");
 
-        // Service
-        int32 Init(const ScreenProperties &aScreenConfig);
-        void Close();
-        void ShutDown();
-        void ClearScene(A2DColor aColor);
-        int32 Release();
+      // Service
+      int32 init(const ScreenProperties &aScreenConfig);
+      void close();
+      void shutDown();
+      void clearScene(A2DColor aColor);
+      int32 release();
 
-        void SetIdentity(); // reset scene Position
-        void SetDefaultMaterial();
-        void SetAmbient(A2DColor aColorValue);
+      void setIdentity(); // reset scene Position
+      void setDefaultMaterial();
+      void setAmbient(A2DColor aColorValue);
 
-        // Render
-        int32 RenderStart();
-        int32 RenderStop();
-        int32 Render2DStart();
-        int32 Render2DStop();
+      // Render
+      int32 renderStart();
+      int32 renderStop();
+      int32 render2DStart();
+      int32 render2DStop();
 
-        // entities
-        void AddEntity(A2DEntity* apEntity);
-        A2DEntity* FindEntity(int32 aObjectType);
-        A2DEntity* FindEntity(A2DString aName);
-        int32 GetEntityCount() const;
-        void UpdateEntities();
-        void Draw3DEntities();
-        void Draw2DEntities();
-        void BuryEntities();
+      // entities
+      void addEntity(A2DEntityPtr apEntity);
+      A2DEntityPtr findEntity(int32 aObjectType);
+      A2DEntityPtr findEntity(A2DString aName);
+      int32 getEntityCount() const;
+      void updateEntities();
+      void draw3DEntities();
+      void draw2DEntities();
+      void buryEntities();
 
-        // Physic
-        bool8 Collision(A2DSprite *apSprite1, A2DSprite *apSprite2);
-        bool8 CollisionBR(A2DSprite *apSprite1, A2DSprite *apSprite2);
-        bool8 CollisionD(A2DSprite *apSprite1, A2DSprite *apSprite2);
-        void TestForCollisions();
+      // Physic
+      bool8 collision(A2DSpritePtr apSprite1, A2DSpritePtr apSprite2);
+      bool8 collisionBR(A2DSpritePtr apSprite1, A2DSpritePtr apSprite2);
+      bool8 collisionD(A2DSpritePtr apSprite1, A2DSpritePtr apSprite2);
+      void testForCollisions();
 
-    // accessor/mutator First order
-    public:
-        bool8 IsPaused() const { return mPauseMode; }
-        void SetPaused(bool8 aValue) { mPauseMode = aValue; }
+   // accessors / mutator First order
+   public:
+      bool8 isPaused() const { return mPauseMode; }
+      void setPaused(bool8 aValue) { mPauseMode = aValue; }
 
-        LPDIRECT3DDEVICE9 GetDevice() const { return mpDevice; }
-        LPDIRECT3DSURFACE9 GetBackBuffer() const { return mpBackBuffer; }
-        LPD3DXSPRITE GetSpriteHandle() const { return mpSpriteHandler; }
+      LPDIRECT3DDEVICE9 getDevice() const { return mpDevice; }
+      LPDIRECT3DSURFACE9 getBackBuffer() const { return mpBackBuffer; }
+      LPD3DXSPRITE getSpriteHandle() const { return mpSpriteHandler; }
 
-        HWND GetWindowHandle() const { return mWindowHandle; }
-        void SetWindowHandle( HWND aHwnd ) { mWindowHandle = aHwnd; }
+      HWND getWindowHandle() const { return mWindowHandle; }
+      void setWindowHandle( HWND aHwnd ) { mWindowHandle = aHwnd; }
         
-        const A2DString& GetAppTitle() const { return mAppTitle; }
-        void SetAppTitle( const A2DString& aNewTitle ) { mAppTitle = aNewTitle; }
+      const A2DString& getAppTitle() const { return mAppTitle; }
+      void setAppTitle( const A2DString& aNewTitle ) { mAppTitle = aNewTitle; }
 
-        int32 GetVersionMajor() const { return mVersionMajor; }
-        int32 GetVersionMinor() const { return mVersionMinor; }
-        int32 GetRevision() const { return mRevision; }
+      int32 getVersionMajor() const { return mVersionMajor; }
+      int32 getVersionMinor() const { return mVersionMinor; }
+      int32 getRevision() const { return mRevision; }
 
-        long32 GetFrameRateCore() const { return mFrameCountCore; } 
-        long32 GetFrameRateReal() const { return mFrameCountReal; } 
+      long32 getFrameRateCore() const { return mFrameCountCore; } 
+      long32 getFrameRateReal() const { return mFrameCountReal; } 
 
-        ScreenProperties &GetScreenProperties() { return mScreenConfig; }
-        void SetScreenProperties( const ScreenProperties &aNewProperties) { mScreenConfig = aNewProperties; }
+      ScreenProperties &getScreenProperties() { return mScreenConfig; }
+      void setScreenProperties( const ScreenProperties &aNewProperties) { mScreenConfig = aNewProperties; }
 
-        bool8 GetMaximizeProcessor() const { return mMaximizeProcesser; }
-        void SetMaximizeProcessor(bool8 aValue) { mMaximizeProcesser = aValue; }
+      bool8 getMaximizeProcessor() const { return mMaximizeProcesser; }
+      void setMaximizeProcessor(bool8 aValue) { mMaximizeProcesser = aValue; }
 
-        A2DAudio* Audio() { return mpAudio; }
-    }; //class
+      A2DAudio* getAudio() { return mpAudio; }
+   }; //class
 }; // namespace
 
 // define global A2DEngine object(visible everywhere!)

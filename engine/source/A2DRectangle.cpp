@@ -19,17 +19,17 @@ namespace Advanced2D
         mBottom = aBottom;
     }
 
-    bool8 A2DRectangle::IsInside(A2DVector3 aPoint)
+    bool8 A2DRectangle::isInside(A2DVector3 aPoint)
     {
-        return IsInside(aPoint(X), aPoint(Y));
+        return isInside(aPoint(X), aPoint(Y));
     }
 
-    bool8 A2DRectangle::IsInside(int32 aX, int32 aY)
+    bool8 A2DRectangle::isInside(int32 aX, int32 aY)
     {
-        return IsInside(static_cast<double64>(aX), static_cast<double64>(aY));
+        return isInside(static_cast<double64>(aX), static_cast<double64>(aY));
     }
 
-    bool8 A2DRectangle::IsInside(double64 aX, double64 aY)
+    bool8 A2DRectangle::isInside(double64 aX, double64 aY)
     {
         return ( aX > mLeft && aX < mRight 
                && aY > mTop && aY < mBottom );

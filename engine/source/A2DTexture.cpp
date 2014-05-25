@@ -10,20 +10,25 @@ namespace Advanced2D
 
     A2DTexture::~A2DTexture()
     {
-        Release();
+        release();
     }
 
-    int A2DTexture::GetWidth() 
+    A2DTexturePtr A2DTexture::create()
+    {
+       return A2DTexturePtr(new A2DTexture());
+    }
+
+    int A2DTexture::getWidth() 
     { 
         return mInfo.Width; 
     };
 
-    int A2DTexture::GetHeight() 
+    int A2DTexture::getHeight() 
     { 
         return mInfo.Height; 
     };
 
-    bool A2DTexture::Load(A2DString aFilename, D3DCOLOR transcolor)
+    bool A2DTexture::load(A2DString aFilename, D3DCOLOR transcolor)
     {
         //standard Windows return value
         HRESULT result;
@@ -37,7 +42,7 @@ namespace Advanced2D
 
         //create the new mpTexture by loading a bitmap image file
         D3DXCreateTextureFromFileEx( 
-            gpEngine->GetDevice(), //Direct3D device object
+            gpEngine->getDevice(), //Direct3D device object
             aFilename.c_str(),      //bitmap filename
             mInfo.Width,            //bitmap image width
             mInfo.Height,           //bitmap image height
@@ -62,12 +67,11 @@ namespace Advanced2D
         return 1;
     }
 
-    void A2DTexture::Release()
+    void A2DTexture::release()
     {
         if (mpTexture != NULL)
         { mpTexture->Release(); }
     }
-
 
     /*
     // D3DX support function used to fill texture with a solid color

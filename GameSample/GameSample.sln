@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DCollisionBR", "GameSample\TestA2DCollisionBR.vcxproj", "{27E46614-96E5-4989-B81F-8CC9841612AD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DCollisionD", "GameSample\TestA2DCollisionD.vcxproj", "{BC983C93-73CF-4881-936A-BA339C3D877B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DThread", "GameSample\TestA2DThread.vcxproj", "{43E996E4-9B08-4251-8BD0-60294483D32F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27E46614-96E5-4989-B81F-8CC9841612AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27E46614-96E5-4989-B81F-8CC9841612AD}.Debug|Win32.Build.0 = Debug|Win32
+		{27E46614-96E5-4989-B81F-8CC9841612AD}.Release|Win32.ActiveCfg = Release|Win32
+		{27E46614-96E5-4989-B81F-8CC9841612AD}.Release|Win32.Build.0 = Release|Win32
+		{BC983C93-73CF-4881-936A-BA339C3D877B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BC983C93-73CF-4881-936A-BA339C3D877B}.Debug|Win32.Build.0 = Debug|Win32
+		{BC983C93-73CF-4881-936A-BA339C3D877B}.Release|Win32.ActiveCfg = Release|Win32
+		{BC983C93-73CF-4881-936A-BA339C3D877B}.Release|Win32.Build.0 = Release|Win32
+		{43E996E4-9B08-4251-8BD0-60294483D32F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{43E996E4-9B08-4251-8BD0-60294483D32F}.Debug|Win32.Build.0 = Debug|Win32
+		{43E996E4-9B08-4251-8BD0-60294483D32F}.Release|Win32.ActiveCfg = Release|Win32
+		{43E996E4-9B08-4251-8BD0-60294483D32F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

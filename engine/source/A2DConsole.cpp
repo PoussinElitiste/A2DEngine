@@ -7,40 +7,45 @@ namespace Advanced2D
         : mShowing(false)
         , mCurrentLine(0)
     {   
-        Clear();
+        clear();
     }
 
     A2DConsole::~A2DConsole()
     {
-        delete mpFont;
-        delete mpPanel;
+        //delete mpFont;
+        //delete mpPanel;
     }
 
-    bool8 A2DConsole::Init()
+    A2DConsolePtr A2DConsole::create()
+    {
+       return A2DConsolePtr(new A2DConsole());
+    }
+
+    bool8 A2DConsole::init()
     {
         // load the panel image
-        mpPanel = new A2DSprite();
-        if (!mpPanel->LoadSpriteImage("../../asset/system/panel.tga")) 
+        mpPanel = A2DSprite::create();
+        if (!mpPanel->loadSpriteImage("../../asset/system/panel.tga")) 
         { return false; }
 
-        double64 scale = gpEngine->GetScreenProperties().mWidth / 640.0f;
-        mpPanel->SetScale(scale);
-        mpPanel->SetColor(0x99FFFFFF);
+        double64 scale = gpEngine->getScreenProperties().mWidth / 640.0f;
+        mpPanel->setScale(scale);
+        mpPanel->setColor(0x99FFFFFF);
 
         // load the font
-        mpFont = new A2DFont();
-        if (!mpFont->LoadSpriteImage("../../asset/system/system12.tga")) 
+        mpFont = A2DFont::create();
+        if (!mpFont->loadSpriteImage("../../asset/system/system12.tga")) 
         { return false; }
 
-        mpFont->SetColumns(16);
-        mpFont->SetCharSize(14,16);
+        mpFont->setColumns(16);
+        mpFont->setCharSize(14,16);
 
-        if (!mpFont->LoadWidthData("../../asset/system/system12.dat")) 
+        if (!mpFont->loadWidthData("../../asset/system/system12.dat")) 
         { return false; }
         return true;
     }
 
-    void A2DConsole::Draw()
+    void A2DConsole::draw()
     {
         int32 x = 5, y = 0;
         if (!mShowing) 
@@ -49,23 +54,23 @@ namespace Advanced2D
         }
         
         // draw panel background
-        mpPanel->Draw();
+        mpPanel->draw();
 
         // draw text lines
         for (uint32 n = 0; n < mTextlines.size(); ++n)
         {
-            mpFont->Print(x, y*14, mTextlines[n], 0xFF000000);
+            mpFont->print(x, y*14, mTextlines[n], 0xFF000000);
             y += 1;
             if (y > 26) 
             {
                 if (x > 10) break;
-                x = gpEngine->GetScreenProperties().mWidth/2 + 5;
+                x = gpEngine->getScreenProperties().mWidth/2 + 5;
                 y = 0;
             }
         }
     }
 
-    void A2DConsole::Print(A2DString aText, int32 aLine)
+    void A2DConsole::print(A2DString aText, int32 aLine)
     {
         if (aLine > -1) 
         { mCurrentLine = aLine; }
@@ -76,7 +81,7 @@ namespace Advanced2D
         { mCurrentLine = 0; }
     }
 
-    void A2DConsole::Clear()
+    void A2DConsole::clear()
     {
         for (int32 n=0; n<55; ++n)
         {

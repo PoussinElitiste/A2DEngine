@@ -17,13 +17,13 @@ namespace Advanced2D
         A2DRectangle(double64 aLeft, double64 aTop, double64 aRight, double64 aBottom);
         virtual ~A2DRectangle() {}
 
-        double64 GetLeft() { return mLeft; }
-        double64 GetTop() { return mTop; }
-        double64 GetRight() { return mRight; }
-        double64 GetBottom() { return mBottom; }
-        bool8 IsInside(A2DVector3 aPoint);
-        bool8 IsInside(int32 aX, int32 aY);
-        bool8 IsInside(double64 aX, double64 aY);
+        double64 getLeft() { return mLeft; }
+        double64 getTop() { return mTop; }
+        double64 getRight() { return mRight; }
+        double64 getBottom() { return mBottom; }
+        bool8 isInside(A2DVector3 aPoint);
+        bool8 isInside(int32 aX, int32 aY);
+        bool8 isInside(double64 aX, double64 aY);
     }; // class 
 } // namespace
 

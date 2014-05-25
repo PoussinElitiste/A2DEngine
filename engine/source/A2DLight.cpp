@@ -57,16 +57,16 @@ namespace Advanced2D
 
     void A2DLight::Update()
     {
-        gpEngine->GetDevice()->SetLight(mLightNum, &mLight);
+        gpEngine->getDevice()->SetLight(mLightNum, &mLight);
     }
 
     void A2DLight::Show()
     {
-        gpEngine->GetDevice()->LightEnable(mLightNum, true);
+        gpEngine->getDevice()->LightEnable(mLightNum, true);
     }
 
     void A2DLight::Hide()
     {
-        gpEngine->GetDevice()->LightEnable(mLightNum, false);
+        gpEngine->getDevice()->LightEnable(mLightNum, false);
     }
 }; // namespace

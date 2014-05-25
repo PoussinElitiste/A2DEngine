@@ -29,23 +29,23 @@ namespace Advanced2D
                 , double64 aRange);
         virtual ~A2DLight();
 
-        void SetPosX(double64 aValue) { mLight.Position.x = static_cast<float>(aValue); }
-        double64 GetPosX() const { return mLight.Position.x; }
-        void SetPosY(double64 aValue) { mLight.Position.y = static_cast<float>(aValue); }
-        double64 GetPosY() const { return mLight.Position.y; }
-        void SetPosZ(double64 aValue) { mLight.Position.z = static_cast<float>(aValue); }
-        double64 GetPosZ() const { return mLight.Position.z; }
+        void setPosX(double64 aValue) { mLight.Position.x = static_cast<float>(aValue); }
+        double64 getPosX() const { return mLight.Position.x; }
+        void setPosY(double64 aValue) { mLight.Position.y = static_cast<float>(aValue); }
+        double64 getPosY() const { return mLight.Position.y; }
+        void setPosZ(double64 aValue) { mLight.Position.z = static_cast<float>(aValue); }
+        double64 getPosZ() const { return mLight.Position.z; }
 
-        A2DType GetType() const { return mType; }
+        A2DType getType() const { return mType; }
 
-        void SetColor(A2DColor aColor) { mLight.Diffuse = aColor; }
-        A2DColor GetColor() const { return mLight.Diffuse; }
+        void setColor(A2DColor aColor) { mLight.Diffuse = aColor; }
+        A2DColor getColor() const { return mLight.Diffuse; }
 
-        void SetDirection(const A2DRenderVector& aDirection) { mLight.Direction = aDirection; }
-        const A2DVector& GetDirection() const { return mLight.Direction; }
+        void setDirection(const A2DRenderVector& aDirection) { mLight.Direction = aDirection; }
+        const A2DVector& getDirection() const { return mLight.Direction; }
 
-        void SetPosition(const A2DRenderVector& aPosition) { mLight.Position = aPosition; }
-        const A2DVector& GetPosition() const { return mLight.Position; }
+        void setPosition(const A2DRenderVector& aPosition) { mLight.Position = aPosition; }
+        const A2DVector& getPosition() const { return mLight.Position; }
 
         void Update();
         void Show();

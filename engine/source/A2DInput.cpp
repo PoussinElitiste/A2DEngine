@@ -54,7 +54,7 @@ namespace Advanced2D
         ScreenToClient(mWindow, &mPosition);
     }
 
-    bool8 A2DInput::GetMouseButton( char aButton )
+    bool8 A2DInput::getMouseButton( char8 aButton )
     {
         return (mMouseState.rgbButtons[aButton] & 0x80) != 0;
     }

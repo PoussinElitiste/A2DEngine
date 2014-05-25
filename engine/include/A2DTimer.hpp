@@ -15,8 +15,8 @@ namespace Advanced2D
     public:
         A2DTimer();
         ~A2DTimer();
-        DWORD GetTimer() const;
-        DWORD GetStartTime() const; // in Milli second
+        DWORD getTimer() const;
+        DWORD getStartTime() const; // in Milli second
         void Sleep(int32 aMilliSecond);
         void Reset();
         bool8 StopWatch(int32 aMilliSecond);

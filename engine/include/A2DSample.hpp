@@ -7,21 +7,25 @@
 namespace Advanced2D
 {
     // Wrapper to interact with FMOD
-    class A2DSample
-    {
-    public:
-        A2DSample();
-        virtual ~A2DSample();
+   class A2DSample;
+   typedef std::tr1::shared_ptr<A2DSample> A2DSamplePtr;
 
-    private:
-        A2DString mName;
+   class A2DSample
+   {
+   public:
+      virtual ~A2DSample();
+      static A2DSamplePtr create();
 
-    public:
-        FMOD_SOUND* mpSample;
-        FMOD_CHANNEL* mpChannel;
-        A2DString GetName() { return mName; }
-        void SetName(A2DString aValue) { mName = aValue; }
-    }; // class 
+   private:
+      A2DSample();
+      A2DString mName;
+
+   public:
+      FMOD_SOUND* mpSample;
+      FMOD_CHANNEL* mpChannel;
+      A2DString getName() { return mName; }
+      void setName(A2DString aValue) { mName = aValue; }
+   }; // class 
 } // namespace
 
 #endif // INC_ADVANCED2D_A2DSAMPLE_HPP

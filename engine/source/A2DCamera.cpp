@@ -32,13 +32,13 @@ namespace Advanced2D
             , mPerspective.mAspectRatio
             , mPerspective.mNearRange
             , mPerspective.mFarRange);
-        gpEngine->GetDevice()->SetTransform(D3DTS_PROJECTION, &mMatrixProj);
+        gpEngine->getDevice()->SetTransform(D3DTS_PROJECTION, &mMatrixProj);
 
         //set the camera’s view matrix
         D3DXMatrixLookAtLH( &mMatrixView
             , &mLocalisation.mPosition
             , &mLocalisation.mTarget
             , &mUpDir);
-        gpEngine->GetDevice()->SetTransform(D3DTS_VIEW, &mMatrixView);
+        gpEngine->getDevice()->SetTransform(D3DTS_VIEW, &mMatrixView);
     }
 } // Advanced2D
