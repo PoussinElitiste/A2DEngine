@@ -19,6 +19,11 @@ namespace Advanced2D
         FMOD_System_Release(mpSystem);
     }
 
+    A2DAudioPtr A2DAudio::create()
+    {
+       return A2DAudioPtr(new A2DAudio());
+    }
+
     bool8 A2DAudio::init()
     {
         if (FMOD_System_Create(&mpSystem) != FMOD_OK) 
@@ -206,5 +211,4 @@ namespace Advanced2D
             }
         }
     }
-
 }; // namespace

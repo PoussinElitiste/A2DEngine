@@ -98,30 +98,30 @@ namespace Advanced2D
 
       HWND mWindowHandle;
 
-      LPDIRECT3D9 mpD3D;
-      LPDIRECT3DDEVICE9 mpDevice;
-      LPDIRECT3DSURFACE9 mpBackBuffer;
-      LPD3DXSPRITE mpSpriteHandler;
+      LPDIRECT3D9          mpD3D;
+      LPDIRECT3DDEVICE9    mpDevice;
+      LPDIRECT3DSURFACE9   mpBackBuffer;
+      LPD3DXSPRITE         mpSpriteHandler;
 
-      A2DString mAppTitle;
+      A2DString   mAppTitle;
 
       ScreenProperties mScreenConfig;
 
-      bool8 mPauseMode;
+      bool8    mPauseMode;
       A2DColor mAmbientColor;
-      bool8 mMaximizeProcesser;
+      bool8    mMaximizeProcesser;
 
       A2DTimer mCoreTimer;
-      long32 mFrameCountCore;
-      long32 mFrameRateCore;
+      long32   mFrameCountCore;
+      long32   mFrameRateCore;
 
       A2DTimer mRealTimer;
-      long32 mFrameCountReal;
-      long32 mFrameRateReal;
+      long32   mFrameCountReal;
+      long32   mFrameRateReal;
 
-      A2DInput* mpInput;
-      A2DAudio* mpAudio;
-      EntityList mpEntities;
+      A2DInputPtr mpInput;
+      A2DAudioPtr mpAudio;
+      EntityList  mpEntities;
 
    public:
       A2DEngine();
@@ -198,7 +198,7 @@ namespace Advanced2D
       bool8 getMaximizeProcessor() const { return mMaximizeProcesser; }
       void setMaximizeProcessor(bool8 aValue) { mMaximizeProcesser = aValue; }
 
-      A2DAudio* getAudio() { return mpAudio; }
+      A2DAudioPtr getAudio() { return mpAudio; }
    }; //class
 }; // namespace
 

@@ -56,10 +56,7 @@ namespace Advanced2D
       if (mpAudio)
       {
          mpAudio->stopAll();
-         delete mpAudio;
       }
-
-      delete mpInput;
 
       if (mpDevice)
       {
@@ -153,12 +150,12 @@ namespace Advanced2D
       //------------------------
       // initialize DirectInput
       //------------------------
-      mpInput = new A2DInput(getWindowHandle());
+      mpInput = A2DInput::create(getWindowHandle());
 
       //------------------------
       // initialize Audio
       //------------------------
-      mpAudio = new A2DAudio();
+      mpAudio = A2DAudio::create();
       if (!mpAudio->init()) 
       { return 0; }
 

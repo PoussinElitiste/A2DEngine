@@ -9,16 +9,20 @@ namespace Advanced2D
    class A2DSample;
    typedef std::tr1::shared_ptr<A2DSample> A2DSamplePtr;
 
+   class A2DAudio;
+   typedef std::tr1::shared_ptr<A2DAudio> A2DAudioPtr;
+
    class A2DAudio
    {
       typedef A2DArray<A2DSamplePtr>             Samples;
       typedef A2DArray<A2DSamplePtr>::iterator   Iterator;
 
    public:
-      A2DAudio();
       virtual ~A2DAudio();
+      static A2DAudioPtr create();
 
    private:
+      A2DAudio();
       FMOD_SYSTEM *mpSystem;
       Samples mSamples;
 
