@@ -76,13 +76,13 @@ namespace Advanced2D
       return stream.str();
    }
 
-   void A2DEngine::message(const A2DString& aMessage, const A2DString& aTitle /*= "ADVANCED_2D"*/)
-   {
+   void A2DEngine::message(const A2DString &aMessage, const A2DString &aTitle /*= "ADVANCED_2D"*/)
+{
       MessageBox(0, aMessage.c_str(), aTitle.c_str(), 0);
    }
 
-   void A2DEngine::fatalError(const A2DString& aMessage, const A2DString& aTitle /*= "FATAL_ERROR"*/)
-   {
+   void A2DEngine::fatalError(const A2DString &aMessage, const A2DString &aTitle /*= "FATAL_ERROR"*/)
+{
       message(aMessage,aTitle);
       shutDown();
    }
@@ -475,15 +475,21 @@ namespace Advanced2D
 
    void A2DEngine::testForCollisions()
    {
-      EntityListIt first;
-      EntityListIt second;
-        
-      A2DSpritePtr pSprite1;
-      A2DSpritePtr pSprite2;
-      first = mpEntities.begin();
-      while (first != mpEntities.end() )
+      EntityListIt first = mpEntities.begin();
+
+      // TEMPORARY! TODO: implement 3D collision
+      if ( (*first)->getRenderType() != RENDER_2D )
       {
          //we only care about sprite collisions
+         return;
+      }
+
+      EntityListIt second;
+      A2DSpritePtr pSprite1;
+      A2DSpritePtr pSprite2;
+
+      while (first != mpEntities.end() )
+      {
          if ( (*first)->getRenderType() == RENDER_2D )
          {
                //point local sprite to sprite contained in the list

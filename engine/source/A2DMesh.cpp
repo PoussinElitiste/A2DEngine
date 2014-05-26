@@ -41,6 +41,11 @@ namespace Advanced2D
         if (mpMesh != NULL) { mpMesh->Release(); }
     }
 
+    A2DMeshPtr A2DMesh::create()
+    {
+       return A2DMeshPtr(new A2DMesh());
+    }
+
     bool A2DMesh::load(const char* aFileName)
     {
         HRESULT result;

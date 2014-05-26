@@ -10,10 +10,15 @@ namespace Advanced2D
         , mFOV(aFOV)
     {}
 
-    A2DCamera::A2DLocalisationInfos::A2DLocalisationInfos( const A2DRenderVector& aPosition, const A2DRenderVector& aTarget )
+    A2DCamera::A2DLocalisationInfos::A2DLocalisationInfos( const A2DRenderVector &aPosition, const A2DRenderVector &aTarget )
         : mPosition(aPosition)
         , mTarget(aTarget)
     {}
+
+    A2DCameraPtr A2DCamera::create()
+    {
+       return A2DCameraPtr(new A2DCamera());
+    }
 
     A2DCamera::A2DCamera()
         : mLocalisation(A2DRenderVector(0.f, 0.f, 10.f))
@@ -24,7 +29,7 @@ namespace Advanced2D
     A2DCamera::~A2DCamera()
     {}
 
-    void A2DCamera::Update()
+    void A2DCamera::update()
     {
         // set camera's perspective matrix
         D3DXMatrixPerspectiveFovLH( &mMatrixProj

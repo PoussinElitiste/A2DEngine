@@ -134,8 +134,8 @@ namespace Advanced2D
 
       // Debug
       A2DString getVersionText() const;
-      void message(const A2DString& aMessage, const A2DString& aTitle = "ADVANCED_2D");
-      void fatalError(const A2DString& aMessage, const A2DString& aTitle = "FATAL_ERROR");
+      void message(const A2DString &aMessage, const A2DString &aTitle = "ADVANCED_2D");
+      void fatalError(const A2DString &aMessage, const A2DString &aTitle = "FATAL_ERROR");
 
       // Service
       int32 init(const ScreenProperties &aScreenConfig);

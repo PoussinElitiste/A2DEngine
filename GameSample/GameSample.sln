@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DCollisionBR", "GameS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DAudio", "GameSample\TestA2DAudio\TestA2DAudio.vcxproj", "{DE101A0A-D6D6-4965-8198-BDF2C6943757}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DMeshEntity", "GameSample\TestA2DMeshEntity\TestA2DMeshEntity.vcxproj", "{D6037C3A-DA71-49C4-AB15-E4926D151F03}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestA2DSpriteEntity", "GameSample\TestA2DSpriteEntity\TestA2DSpriteEntity.vcxproj", "{4CB35027-885C-40AF-8C3A-4450BE564476}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +35,14 @@ Global
 		{DE101A0A-D6D6-4965-8198-BDF2C6943757}.Debug|Win32.Build.0 = Debug|Win32
 		{DE101A0A-D6D6-4965-8198-BDF2C6943757}.Release|Win32.ActiveCfg = Release|Win32
 		{DE101A0A-D6D6-4965-8198-BDF2C6943757}.Release|Win32.Build.0 = Release|Win32
+		{D6037C3A-DA71-49C4-AB15-E4926D151F03}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D6037C3A-DA71-49C4-AB15-E4926D151F03}.Debug|Win32.Build.0 = Debug|Win32
+		{D6037C3A-DA71-49C4-AB15-E4926D151F03}.Release|Win32.ActiveCfg = Release|Win32
+		{D6037C3A-DA71-49C4-AB15-E4926D151F03}.Release|Win32.Build.0 = Release|Win32
+		{4CB35027-885C-40AF-8C3A-4450BE564476}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4CB35027-885C-40AF-8C3A-4450BE564476}.Debug|Win32.Build.0 = Debug|Win32
+		{4CB35027-885C-40AF-8C3A-4450BE564476}.Release|Win32.ActiveCfg = Release|Win32
+		{4CB35027-885C-40AF-8C3A-4450BE564476}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

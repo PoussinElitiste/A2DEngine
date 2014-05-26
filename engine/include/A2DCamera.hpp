@@ -7,54 +7,59 @@
 
 namespace Advanced2D
 {
-    class A2DCamera
-    {
-    public:
-        struct A2DLocalisationInfos
-        {
-            A2DLocalisationInfos( const A2DRenderVector& aPosition = A2DRenderVector()
-                , const A2DRenderVector& aTarget = A2DRenderVector() );
+   class A2DCamera;
+   typedef std::tr1::shared_ptr<A2DCamera> A2DCameraPtr;
 
-            A2DRenderVector mPosition;
-            A2DRenderVector mTarget;
-        }; // A2DLocalisationInfos
+   class A2DCamera
+   {
+   public:
+      struct A2DLocalisationInfos
+      {
+         A2DLocalisationInfos( const A2DRenderVector &aPosition = A2DRenderVector()
+                             , const A2DRenderVector &aTarget = A2DRenderVector() );
 
-        struct A2DPrespectiveInfos
-        {
-            A2DPrespectiveInfos( float32 aNearRange = 0.f
-                , float32 aFarRange = 0.f
-                , float32 aAspectRatio = 0.f
-                , float32 aFOV = 0.f );
+         A2DRenderVector mPosition;
+         A2DRenderVector mTarget;
+      }; // A2DLocalisationInfos
 
-            float32 mNearRange;
-            float32 mFarRange;
-            float32 mAspectRatio;
-            float32 mFOV;
-        }; // A2DPrespectiveInfos
+      struct A2DPrespectiveInfos
+      {
+         A2DPrespectiveInfos( float32 aNearRange = 0.f
+                            , float32 aFarRange = 0.f
+                            , float32 aAspectRatio = 0.f
+                            , float32 aFOV = 0.f );
 
-    private:
-        D3DXMATRIX mMatrixProj;
-        D3DXMATRIX mMatrixView;
-        A2DRenderVector mUpDir;
+         float32 mNearRange;
+         float32 mFarRange;
+         float32 mAspectRatio;
+         float32 mFOV;
+      }; // A2DPrespectiveInfos
 
-        A2DLocalisationInfos mLocalisation;
-        A2DPrespectiveInfos mPerspective;
-    public:
-        A2DCamera();
-        virtual ~A2DCamera();
+   private:
+      A2DCamera();
 
-        void setPerspective(const A2DPrespectiveInfos& aPerspective) { mPerspective = aPerspective; }
-        A2DPrespectiveInfos& getPerspective() { return mPerspective; }
-        const A2DPrespectiveInfos& getPerspective() const { return mPerspective; }
+      D3DXMATRIX mMatrixProj;
+      D3DXMATRIX mMatrixView;
+      A2DRenderVector mUpDir;
 
-        void setPosition(const A2DRenderVector& aValue) { mLocalisation.mPosition = aValue; }
-        void setTarget(const A2DRenderVector& aValue) { mLocalisation.mTarget = aValue; }
-        void setLocalisation(const A2DLocalisationInfos& aLocalisation) { mLocalisation = aLocalisation; }
-        const A2DLocalisationInfos& getLocalisation() const { return mLocalisation; }
+      A2DLocalisationInfos mLocalisation;
+      A2DPrespectiveInfos mPerspective;
+   public:
+      virtual ~A2DCamera();
 
-        void Update();
+      static A2DCameraPtr create();
 
-    }; // A2DCamera
+      void setPerspective(const A2DPrespectiveInfos &aPerspective) { mPerspective = aPerspective; }
+      A2DPrespectiveInfos &getPerspective() { return mPerspective; }
+      const A2DPrespectiveInfos &getPerspective() const { return mPerspective; }
+
+      void setPosition(const A2DRenderVector &aValue) { mLocalisation.mPosition = aValue; }
+      void setTarget(const A2DRenderVector &aValue) { mLocalisation.mTarget = aValue; }
+      void setLocalisation(const A2DLocalisationInfos& aLocalisation) { mLocalisation = aLocalisation; }
+      const A2DLocalisationInfos &getLocalisation() const { return mLocalisation; }
+
+      void update();
+   }; // A2DCamera
 } // Advanced2D
 
 #endif // INC_ADVANCED2D_A2DCAMERA_HPP
